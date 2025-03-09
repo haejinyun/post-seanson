@@ -7,6 +7,7 @@
 import LottieComponent from '@/components/Lottie';
 import { useRouter } from 'next/navigation';
 import baseballLottie from '@/assets/lottie/baseball.json';
+import * as S from './Club.css';
 
 function Club() {
   const router = useRouter();
@@ -64,24 +65,7 @@ function Club() {
             <br />
             응원하는 구단의 라인업을 만들고 공유해봐요.
           </span>
-          <button
-            type="button"
-            onClick={moveToSelectClub}
-            style={{
-              backgroundColor: '#39D69C',
-              color: 'white',
-              fontSize: '14px',
-              fontWeight: 700,
-              padding: '16px 0',
-              borderRadius: '10px',
-              border: 'none',
-              cursor: 'pointer',
-              width: '100%',
-              // '&:hover': {
-              //   backgroundColor: '#2DB88D',
-              // },
-            }}
-          >
+          <button className={S.moveButton} type="button" onClick={moveToSelectClub}>
             START
           </button>
         </div>

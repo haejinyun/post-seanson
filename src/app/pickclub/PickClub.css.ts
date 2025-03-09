@@ -20,14 +20,8 @@ export const triggerList = style({
   display: 'flex',
   flexDirection: 'column',
   gap: '12px',
-
   backgroundColor: '#E4E4E4',
   borderRadius: '10px',
-  // maxWidth: '401px',
-  // minWidth: '320px',
-  // width: '100%',
-
-  // boxSizing: 'border-box',
 });
 
 export const triggerUnit = style({
@@ -36,11 +30,14 @@ export const triggerUnit = style({
   maxWidth: '401px',
   minWidth: '320px',
   width: '100%',
-  // backgroundColor: 'blue',
   backgroundColor: '#E4E4E4',
   padding: '12px',
   boxSizing: 'border-box',
   borderRadius: '10px',
+  fontSize: '14px',
+  fontWeight: 600,
+  color: '#27214D',
+  cursor: 'pointer',
   ':hover': {
     backgroundColor: '#D4D4D4',
   },

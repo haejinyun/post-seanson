@@ -8,7 +8,7 @@ import { colors } from '@/styles/colors';
 import Image from 'next/image';
 
 import * as DropdownMenu from '@radix-ui/react-dropdown-menu';
-// import { useClub } from '@/provider/clubProviders';
+
 import { CLUBS } from '@/consts/text';
 import { useRouter, useSearchParams } from 'next/navigation';
 import * as S from './PickClub.css';
@@ -21,7 +21,6 @@ function PickClub() {
   const urlClubName = searchParams.get('clubName');
 
   const moveToSelectClub = () => {
-    console.log('moveToSelectClub');
     router.push(`/selectplayer?clubName=${urlClubName}`);
   };
 
@@ -49,16 +48,12 @@ function PickClub() {
     }
     return null;
   };
-  // 여기서 클럽에 대한 정보를 가져와야함.
-
-  // const sample = colors.kiaColor;
-  console.log('clubName 매번 바뀌여서 리렌더링 안일어나기?', urlClubName);
 
   const handleSelectClub = (value: string) => {
     router.push(`?clubName=${value}`);
   };
 
-  const sample = pickClubInfo(urlClubName || 'kia');
+  const pickClubValue = pickClubInfo(urlClubName || 'kia');
   // 일단 없으면 기아ㅏ껄로 사용하기 나중에 없는 경우도 하나 만들어놓기.
 
   return (
@@ -67,8 +62,7 @@ function PickClub() {
         height: '100vh',
         display: 'flex',
         flexDirection: 'column',
-        backgroundColor: sample?.color.logoBackground,
-        // 위 컬러 등등은 계속 바뀌어야함.
+        backgroundColor: pickClubValue?.color.logoBackground,
         width: '100%',
       }}
     >
@@ -84,7 +78,7 @@ function PickClub() {
       >
         <Image
           src={
-            sample?.logo || KiaImage
+            pickClubValue?.logo || KiaImage
             // 사진도 계속 바뀌어야히ㅐ
           }
           alt="Logo"
@@ -120,7 +114,7 @@ function PickClub() {
           <DropdownMenu.Root>
             <DropdownMenu.Trigger asChild>
               <button type="button" className={S.triggerWrapper} aria-label="Customise options">
-                {sample?.value || '구단 선택'}
+                {pickClubValue?.value || '구단 선택'}
               </button>
             </DropdownMenu.Trigger>
             <DropdownMenu.Portal>
@@ -143,7 +137,7 @@ function PickClub() {
             type="button"
             onClick={moveToSelectClub}
             style={{
-              backgroundColor: sample?.color.main,
+              backgroundColor: pickClubValue?.color.main,
               color: 'white',
               fontSize: '14px',
               fontWeight: 700,
