@@ -1,4 +1,5 @@
 'use client';
+
 import KiaImage from '@/assets/png/clubLogo/kia.png';
 import EaglesImage from '@/assets/png/clubLogo/eglse.png';
 import KiwoomImage from '@/assets/png/clubLogo/kiwoom.png';
@@ -7,10 +8,10 @@ import { colors } from '@/styles/colors';
 import Image from 'next/image';
 
 import * as DropdownMenu from '@radix-ui/react-dropdown-menu';
-import { useClub } from '@/provider/clubProviders';
-import * as S from './PickClub.css';
+// import { useClub } from '@/provider/clubProviders';
 import { CLUBS } from '@/consts/text';
 import { useRouter, useSearchParams } from 'next/navigation';
+import * as S from './PickClub.css';
 
 // 여기서 아무것도 안가지고 있다가 클럽을 선택하면 클럽에 맞는 색상이 context에 들어가야해.
 
@@ -46,6 +47,7 @@ function PickClub() {
         color: colors.kiwoomColor,
       };
     }
+    return null;
   };
   // 여기서 클럽에 대한 정보를 가져와야함.
 

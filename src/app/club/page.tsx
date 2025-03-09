@@ -4,7 +4,9 @@
 
 'use client';
 
+import LottieComponent from '@/components/Lottie';
 import { useRouter } from 'next/navigation';
+import baseballLottie from '@/assets/lottie/baseball.json';
 
 function Club() {
   const router = useRouter();
@@ -28,9 +30,12 @@ function Club() {
           minWidth: '320px',
           maxWidth: '450px',
           margin: '0 auto',
+          display: 'flex',
+          height: '100%',
+          justifyContent: 'center',
         }}
       >
-        아이콘
+        <LottieComponent animationData={baseballLottie} />
       </div>
       <div
         style={{
