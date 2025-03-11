@@ -1,16 +1,14 @@
 'use client';
 
 import KiaImage from '@/assets/png/clubLogo/kia.png';
-import EaglesImage from '@/assets/png/clubLogo/eglse.png';
-import KiwoomImage from '@/assets/png/clubLogo/kiwoom.png';
 
-import { colors } from '@/styles/colors';
 import Image from 'next/image';
 
 import * as DropdownMenu from '@radix-ui/react-dropdown-menu';
 
 import { CLUBS } from '@/consts/text';
 import { useRouter, useSearchParams } from 'next/navigation';
+import pickClubInfo from '@/util/getPickClubInfo';
 import * as S from './PickClub.css';
 
 // 여기서 아무것도 안가지고 있다가 클럽을 선택하면 클럽에 맞는 색상이 context에 들어가야해.
@@ -22,31 +20,6 @@ function PickClub() {
 
   const moveToSelectClub = () => {
     router.push(`/selectplayer?clubName=${urlClubName}`);
-  };
-
-  const pickClubInfo = (pick: string) => {
-    if (pick === 'kia') {
-      return {
-        value: '기아 타이거즈',
-        logo: KiaImage,
-        color: colors.kiaColor,
-      };
-    }
-    if (pick === 'eagles') {
-      return {
-        value: '한화 이글스',
-        logo: EaglesImage,
-        color: colors.hanwhaColor,
-      };
-    }
-    if (pick === 'kiwoom') {
-      return {
-        value: '키움 히어로즈',
-        logo: KiwoomImage,
-        color: colors.kiwoomColor,
-      };
-    }
-    return null;
   };
 
   const handleSelectClub = (value: string) => {
@@ -77,10 +50,7 @@ function PickClub() {
         }}
       >
         <Image
-          src={
-            pickClubValue?.logo || KiaImage
-            // 사진도 계속 바뀌어야히ㅐ
-          }
+          src={pickClubValue?.logo || KiaImage}
           alt="Logo"
           width={300}
           style={{

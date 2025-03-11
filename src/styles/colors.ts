@@ -1,4 +1,4 @@
-export const colors = {
+const colors = {
   hanwhaColor: {
     main: '#EB5B24',
     background: '#FFB799',
