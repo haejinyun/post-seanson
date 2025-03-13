@@ -14,7 +14,34 @@ export const positionListWrapper = style({
   borderBottom: '2px solid #F3F3F3',
 });
 
-// export const moveButton = style({
+export const playerListWrapper = style({
+  display: 'flex',
+  flexDirection: 'column',
+  height: '300px', // 이후에는 Min max 두고 calc로 적절하게 잡아가기
+  overflowY: 'auto',
+  padding: '16px 8px',
+  boxSizing: 'border-box',
+  borderBottom: '2px solid #F3F3F3',
+});
+
+export const playerUnitButtonWrapper = style({
+  width: '100%',
+  display: 'flex',
+  flexDirection: 'column',
+});
+
+export const playerUnit = style({
+  display: 'flex',
+  width: '100%',
+  alignItems: 'center',
+  padding: '8px ',
+  boxSizing: 'border-box',
+  cursor: 'pointer',
+  ':hover': {
+    backgroundColor: '#F3F3F3',
+  },
+});
+// export const moveButton = style({positionListWrapper
 //   backgroundColor: pickClubValue?.color.main,
 //   color: 'white',
 //   fontSize: '14px',
