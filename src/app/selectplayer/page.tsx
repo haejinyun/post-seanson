@@ -1,78 +1,15 @@
 'use client';
 
 import pickClubInfo from '@/util/getPickClubInfo';
-import { useSearchParams } from 'next/navigation';
+import { useSearchParams, useRouter } from 'next/navigation';
 
 import { useState } from 'react';
 import PlayGroundField, { PickPosition, PlayerUnit } from '@/components/PlayGroundField';
 import { EAGLES_PLAYER, POSITION_LIST } from '@/consts/text';
 import * as S from './SelectPlayer.css';
 
-// const SAMPLE_PLAYER_LIST: PlayerUnit[] = [
-//   {
-//     name: '김현수',
-//     position: '외야수',
-//     value: 'leftOutfield',
-//     image: 'https://6ptotvmi5753.edge.naverncp.com/KBO_IMAGE/person/middle/2025/76290.jpg',
-//   },
-//   {
-//     name: '김현수',
-//     position: '외야수',
-//     value: 'rightOutfield',
-//     image: 'https://6ptotvmi5753.edge.naverncp.com/KBO_IMAGE/person/middle/2025/76290.jpg',
-//   },
-//   {
-//     name: '김현수',
-//     position: '외야수',
-//     value: 'middleOutfield',
-//     image: 'https://6ptotvmi5753.edge.naverncp.com/KBO_IMAGE/person/middle/2025/76290.jpg',
-//   },
-//   {
-//     name: '오스틴',
-//     position: '내야수',
-//     value: 'oneInfield',
-//     image: 'https://6ptotvmi5753.edge.naverncp.com/KBO_IMAGE/person/middle/2025/76290.jpg',
-//   },
-//   {
-//     name: '오스틴',
-//     position: '내야수',
-//     value: 'twoInfield',
-//     image: 'https://6ptotvmi5753.edge.naverncp.com/KBO_IMAGE/person/middle/2025/53123.jpg',
-//   },
-//   {
-//     name: '오스틴',
-//     position: '내야수',
-//     value: 'threeInfield',
-//     image: 'https://6ptotvmi5753.edge.naverncp.com/KBO_IMAGE/person/middle/2025/53123.jpg',
-//   },
-//   {
-//     name: '오스틴',
-//     position: '내야수',
-//     value: 'shortstopInfield',
-//     image: 'https://6ptotvmi5753.edge.naverncp.com/KBO_IMAGE/person/middle/2025/53123.jpg',
-//   },
-//   {
-//     name: '오스틴',
-//     position: '투수',
-//     value: 'pitcher',
-//     image: 'https://6ptotvmi5753.edge.naverncp.com/KBO_IMAGE/person/middle/2025/53123.jpg',
-//   },
-//   {
-//     name: '오스틴',
-//     position: '포수',
-//     value: 'catcher',
-//     image: 'https://6ptotvmi5753.edge.naverncp.com/KBO_IMAGE/person/middle/2025/53123.jpg',
-//   },
-//   {
-//     name: '오스틴',
-//     position: '내야수',
-//     value: 'dh',
-//     image: 'https://6ptotvmi5753.edge.naverncp.com/KBO_IMAGE/person/middle/2025/53123.jpg',
-//   },
-// ];
-
 function SelectPlayer() {
-  // const router = useRouter();
+  const router = useRouter();
   const searchParams = useSearchParams();
   const urlClubName = searchParams.get('clubName');
 
@@ -84,10 +21,11 @@ function SelectPlayer() {
 
   const moveToSelectClub = () => {
     console.log('playerList onClick:', playerList);
-    // router.push('/pickclub');
+    localStorage.setItem('playerList', JSON.stringify(playerList));
+    router.push(`/lineup?clubName=${urlClubName}`);
   };
 
-  console.log('playerList:', playerList);
+  // console.log('playerList:', playerList);
 
   const pickMembersList = () => {
     if (
@@ -213,9 +151,12 @@ function SelectPlayer() {
             </div>
           </div>
           <button
-            disabled={playerList.length !== 9}
+            disabled={playerList.length !== 10}
             type="button"
-            onClick={moveToSelectClub}
+            onClick={() => {
+              console.log('playerList:', playerList);
+              moveToSelectClub();
+            }}
             style={{
               backgroundColor: pickClubValue?.color.main,
               color: 'white',
