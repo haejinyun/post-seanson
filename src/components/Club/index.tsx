@@ -1,8 +1,8 @@
 'use client';
 
-import LottieComponent from '@/components/Lottie';
+// import LottieComponent from '@/components/Lottie';
 import { useRouter } from 'next/navigation';
-import baseballLottie from '@/assets/lottie/baseball.json';
+// import baseballLottie from '@/assets/lottie/baseball.json';
 import * as S from './Club.css';
 
 function Club() {
@@ -32,7 +32,7 @@ function Club() {
           justifyContent: 'center',
         }}
       >
-        <LottieComponent animationData={baseballLottie} />
+        {/* <LottieComponent animationData={baseballLottie} /> */}
       </div>
       <div
         style={{
