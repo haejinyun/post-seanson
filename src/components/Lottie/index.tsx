@@ -2,8 +2,9 @@
 import Lottie from 'lottie-web';
 import { useEffect, useRef, useState } from 'react';
 // TODO: Lottie 애니메이션 컴포넌트 타입 수정필요
-// eslint-disable-next-line react/prop-types
-function LottieComponent({ animationData, ...restProps }) {
+
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+function LottieComponent({ animationData, ...restProps }: any) {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const animationContainer = useRef<any>(null);
   // eslint-disable-next-line @typescript-eslint/no-explicit-any, @typescript-eslint/no-unused-vars

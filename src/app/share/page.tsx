@@ -1,7 +1,8 @@
 'use client';
 
+import html2canvas from 'html2canvas';
 import pickClubInfo from '@/util/getPickClubInfo';
-import { useRouter, useSearchParams } from 'next/navigation';
+import { useSearchParams } from 'next/navigation';
 import { PlayerUnit } from '@/components/PlayGroundField';
 // import { AlignJustify } from 'lucide-react';
 import DraggableItem from '@/components/DragAbleUnit';
@@ -9,13 +10,12 @@ import { useCallback, useRef, useState } from 'react';
 import { DndProvider } from 'react-dnd';
 import { HTML5Backend } from 'react-dnd-html5-backend';
 import PlayerListUnit from '@/components/lineup/PlayerListUnit';
+import saveAs from 'file-saver';
 import * as S from './LineUp.css';
 
 // useRouter
 
 function LineUp() {
-  const router = useRouter();
-
   const searchParams = useSearchParams();
   const urlClubName = searchParams.get('clubName');
   const pickClubValue = pickClubInfo(urlClubName || 'kia');
@@ -66,22 +66,23 @@ function LineUp() {
 
   const divRef = useRef<HTMLDivElement>(null);
 
-  const handleDownload = () => {
-    router.push(`/share?clubName=${urlClubName}`);
-    // console.log('divRef:', divRef);
-    // if (!divRef.current) return;
-    // try {
-    //   const div = divRef.current;
-    //   const canvas = await html2canvas(div, { scale: 2, useCORS: true });
-    //   // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    //   canvas.toBlob((blob: any) => {
-    //     if (blob !== null) {
-    //       saveAs(blob, 'result.png');
-    //     }
-    //   });
-    // } catch (error) {
-    //   console.error('Error converting div to image:', error);
-    // }
+  const handleDownload = async () => {
+    console.log('divRef:', divRef);
+    if (!divRef.current) return;
+
+    try {
+      const div = divRef.current;
+      const canvas = await html2canvas(div, { scale: 2, useCORS: true });
+
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      canvas.toBlob((blob: any) => {
+        if (blob !== null) {
+          saveAs(blob, 'result.png');
+        }
+      });
+    } catch (error) {
+      console.error('Error converting div to image:', error);
+    }
   };
 
   return (
@@ -130,32 +131,50 @@ function LineUp() {
           </div>
         </DndProvider>
         {/* //나누기 */}
-        <button
-          type="button"
-          // onClick={() => {
-          //   console.log('playerList:', playerList);
-          //   handleDownload();
-          //   // moveToSelectClub();
-          // }}
-          onClick={handleDownload}
-          style={{
-            backgroundColor: pickClubValue?.color.main,
-            color: 'white',
-            fontSize: '14px',
-            fontWeight: 700,
-            padding: '16px 0',
-            borderRadius: '10px',
-            border: 'none',
-            cursor: 'pointer',
-            width: '100%',
-            boxSizing: 'border-box',
-            // '&:hover': {
-            //   backgroundColor: '#2DB88D',
-            // },
-          }}
-        >
-          SUBMIT
-        </button>
+        <div style={{ display: 'flex', flexDirection: 'column', gap: '20px' }}>
+          <button
+            type="button"
+            onClick={handleDownload}
+            style={{
+              backgroundColor: pickClubValue?.color.main,
+              color: 'white',
+              fontSize: '14px',
+              fontWeight: 700,
+              padding: '16px 0',
+              borderRadius: '10px',
+              border: 'none',
+              cursor: 'pointer',
+              width: '100%',
+              boxSizing: 'border-box',
+              // '&:hover': {
+              //   backgroundColor: '#2DB88D',
+              // },
+            }}
+          >
+            IMAGE DOWNLOAD
+          </button>
+          <button
+            type="button"
+            onClick={handleDownload}
+            style={{
+              backgroundColor: pickClubValue?.color.main,
+              color: 'white',
+              fontSize: '14px',
+              fontWeight: 700,
+              padding: '16px 0',
+              borderRadius: '10px',
+              border: 'none',
+              cursor: 'pointer',
+              width: '100%',
+              boxSizing: 'border-box',
+              // '&:hover': {
+              //   backgroundColor: '#2DB88D',
+              // },
+            }}
+          >
+            SHARE
+          </button>
+        </div>
       </div>
     </div>
   );
