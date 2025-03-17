@@ -1,7 +1,3 @@
-// import BottomSection from '@/components/club/BottomSection';
-// import TopSection from '@/components/club/TopSection';
-// import MainLayout from '@/components/Layout/mainLayout';
-
 'use client';
 
 import LottieComponent from '@/components/Lottie';
