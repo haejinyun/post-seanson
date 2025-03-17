@@ -2,6 +2,7 @@ import Image from 'next/image';
 import baseballPark from '@/assets/png/baseballPark.png';
 import pickClubInfo from '@/util/getPickClubInfo';
 import { useSearchParams } from 'next/navigation';
+import { Suspense } from 'react';
 import * as S from './PlayGroundField.css';
 
 export type PickPosition =
@@ -37,21 +38,23 @@ function PlayGroundField({ playerList }: PlayGroundFieldProps) {
   const pickClubValue = pickClubInfo(urlClubName || 'kia');
 
   return (
-    <div className={S.container}>
-      <Image src={baseballPark} alt="Logo" className={S.parkImage} />
-      <div className={S.positionListWrapper}>
-        {playerList.map((player, index) => (
-          <div
-            // eslint-disable-next-line react/no-array-index-key
-            key={`${player.name}-${index}`}
-            className={S.playerPosition({ position: player.value })}
-            style={{ borderColor: pickClubValue?.color.main }}
-          >
-            <Image src={player.image} fill alt={player.name} className={S.playerImage} />
-          </div>
-        ))}
+    <Suspense>
+      <div className={S.container}>
+        <Image src={baseballPark} alt="Logo" className={S.parkImage} />
+        <div className={S.positionListWrapper}>
+          {playerList.map((player, index) => (
+            <div
+              // eslint-disable-next-line react/no-array-index-key
+              key={`${player.name}-${index}`}
+              className={S.playerPosition({ position: player.value })}
+              style={{ borderColor: pickClubValue?.color.main }}
+            >
+              <Image src={player.image} fill alt={player.name} className={S.playerImage} />
+            </div>
+          ))}
+        </div>
       </div>
-    </div>
+    </Suspense>
   );
 }
 
