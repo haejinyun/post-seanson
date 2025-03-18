@@ -21,7 +21,8 @@ export const containerWrapper = style({
   minWidth: '320px',
   width: '100%',
   maxWidth: '450px',
-  padding: '0px 0px 24px 0px',
+  padding: '0px 24px 24px 24px',
+  boxSizing: 'border-box',
 });
 
 export const header = style({
@@ -29,6 +30,7 @@ export const header = style({
   justifyContent: 'center',
   alignItems: 'center',
   height: '48px',
+  width: '100%',
   color: '#fff',
   fontSize: '20px',
   fontWeight: 600,
@@ -42,9 +44,9 @@ export const listWrapper = style({
 });
 
 export const playerListWrapper = style({
-  padding: '0px 24px 24px 24px',
   display: 'flex',
   flexDirection: 'column',
+  backgroundColor: '#fff',
 });
 
 export const dateTitle = style({ display: 'flex', justifyContent: 'center' });

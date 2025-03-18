@@ -28,6 +28,13 @@ export const playerUnitButtonWrapper = style({
   width: '100%',
   display: 'flex',
   flexDirection: 'column',
+  backgroundColor: 'transparent',
+  // selectors: {
+  //   '&[data-state="active"]': {
+  //     backgroundColor: '#F3F3F3',
+  //     cursor: 'not-allowed',
+  //   },
+  // },
 });
 
 export const playerUnit = style({

@@ -40,9 +40,6 @@ function LineUp() {
   });
 
   const mainPitcher = groupedPlayers.pitcher.player[0];
-  console.log('groupedPlayers', groupedPlayers);
-
-  console.log('parsedPlayerList:', parsedPlayerList);
 
   const moveBatterPlayer = useCallback((dragIndex: number, hoverIndex: number) => {
     setGroupedPlayers(prevState => {
@@ -86,7 +83,10 @@ function LineUp() {
 
   return (
     <Suspense>
-      <div className={S.container} style={{ backgroundColor: pickClubValue?.color.bright }}>
+      <div className={S.container}>
+        <div className={S.header} style={{ backgroundColor: pickClubValue?.color.main }}>
+          Line up
+        </div>
         <div className={S.containerWrapper}>
           {/* //나누기 */}
           <DndProvider backend={HTML5Backend}>
@@ -95,9 +95,6 @@ function LineUp() {
               style={{ backgroundColor: pickClubValue?.color.bright }}
               ref={divRef}
             >
-              <div className={S.header} style={{ backgroundColor: pickClubValue?.color.main }}>
-                Line up
-              </div>
               <div className={S.playerListWrapper}>
                 <div className={S.playerUnit} style={{ borderColor: pickClubValue?.color.main }}>
                   <div className={S.playerInfoSection}>
@@ -144,12 +141,14 @@ function LineUp() {
               color: 'white',
               fontSize: '14px',
               fontWeight: 700,
-              padding: '16px 0',
+              padding: '16px 24px',
+
               borderRadius: '10px',
               border: 'none',
               cursor: 'pointer',
               width: '100%',
               boxSizing: 'border-box',
+              // padding: '55px 24px 24px 24px',
               // '&:hover': {
               //   backgroundColor: '#2DB88D',
               // },

@@ -5,7 +5,7 @@ import { useSearchParams, useRouter } from 'next/navigation';
 
 import { Suspense, useState } from 'react';
 import PlayGroundField, { PickPosition, PlayerUnit } from '@/components/PlayGroundField';
-import { EAGLES_PLAYER, POSITION_LIST } from '@/consts/text';
+import { EAGLES_PLAYER, KIA_PLAYER, KIWOOM_PLAYER, POSITION_LIST } from '@/consts/text';
 import * as S from './SelectPlayer.css';
 
 function SelectPlayer() {
@@ -20,28 +20,41 @@ function SelectPlayer() {
   const [playerList, setPlayerList] = useState<PlayerUnit[]>([]);
 
   const moveToSelectClub = () => {
-    console.log('playerList onClick:', playerList);
     localStorage.setItem('playerList', JSON.stringify(playerList));
     router.push(`/lineup?clubName=${urlClubName}`);
   };
 
-  // console.log('playerList:', playerList);
+  const clubMembersList = (pickClubValueInClubMembersList: string) => {
+    if (pickClubValueInClubMembersList === 'eagles') {
+      return EAGLES_PLAYER;
+    }
+    if (pickClubValueInClubMembersList === 'kiwoom') {
+      return KIWOOM_PLAYER;
+    }
+    if (pickClubValueInClubMembersList === 'kia') {
+      return KIA_PLAYER;
+    }
+
+    return EAGLES_PLAYER;
+  };
+
+  const PLAYER_LIST = clubMembersList(urlClubName || 'kia');
 
   const pickMembersList = () => {
     if (
       pickPositionState.value === 'dh' &&
       (pickPositionState.totalValue as string[]).some(value =>
-        ['infield', 'outfield'].includes(value),
+        ['infielder', 'outfielder'].includes(value),
       )
     ) {
-      const first = EAGLES_PLAYER.filter(
-        player => player.position === 'outfield' || player.position === 'infield',
+      const first = PLAYER_LIST.filter(
+        player => player.position === 'outfielder' || player.position === 'infield',
       );
 
       const mergeList = first.reduce
         ? first.reduce(
             (acc, player) => {
-              acc.position = 'infield, outfield'; // position 통합
+              acc.position = 'infielder, outfielder'; // position 통합
               acc.playerList = [...acc.playerList, ...player.playerList]; // playerList 합치기
               return acc;
             },
@@ -52,7 +65,7 @@ function SelectPlayer() {
       return [mergeList];
     }
 
-    return EAGLES_PLAYER.filter(player => player.position === pickPositionState.totalValue);
+    return PLAYER_LIST.filter(player => player.position === pickPositionState.totalValue);
   };
 
   const membersList = pickMembersList();
@@ -67,12 +80,36 @@ function SelectPlayer() {
     },
     pickPosition: PickPosition,
   ) => {
-    // TODO: 이미 있는 포지션은 못들어가야해
+    if (playerList.some(player => player.name === value.name)) {
+      // 제외하기
+      const filteredPlayerList = playerList.filter(player => player.name !== value.name);
+      setPlayerList(filteredPlayerList);
+    } else {
+      const isExist = playerList.some(player => player.value === pickPosition);
 
-    setPlayerList([...playerList, { ...value, value: pickPosition }]);
+      if (isExist) {
+        const filteredPlayerList = playerList.filter(player => player.value !== pickPosition);
+        setPlayerList([...filteredPlayerList, { ...value, value: pickPosition }]);
+      } else {
+        setPlayerList([...playerList, { ...value, value: pickPosition }]);
+      }
+    }
   };
 
-  // console.log('playerList playerList playerList:', playerList);
+  const checkDuplicate = (tt: {
+    value: {
+      name: string;
+      position: string;
+      image: string;
+      totalPosition: string;
+    };
+    pickPosition: PickPosition;
+  }) => {
+    if (playerList.length === 0) {
+      return false;
+    }
+    return playerList.some(player => player.name === tt.value.name);
+  };
 
   return (
     <Suspense>
@@ -89,7 +126,6 @@ function SelectPlayer() {
         <div
           style={{
             backgroundColor: '#fff',
-            padding: ' 0 0 24px 0',
             marginTop: 'auto',
           }}
         >
@@ -106,7 +142,6 @@ function SelectPlayer() {
               maxHeight: '480px',
               height: '100%',
               minHeight: '250px',
-              // minHeight: '350px',
             }}
           >
             <div>
@@ -139,14 +174,19 @@ function SelectPlayer() {
               <div className={S.playerListWrapper}>
                 {membersList[0]?.playerList.map((member, index) => (
                   <button
-                    // TODO: 여기서 이미 뽑힌 선수는 List에서 disable 시키기
-                    // 만약 중견수에서 플로리얼을 뽑았으면 우익수에서는 플로리얼이 disable처리 되어야하고, 다시 중견수 섹션에서는 active처리 되어야함
-
                     // eslint-disable-next-line react/no-array-index-key
                     key={`${member}-${index}`}
                     type="button"
                     onClick={() => clickPlayer(member, pickPositionState.value as PickPosition)}
                     className={S.playerUnitButtonWrapper}
+                    style={
+                      checkDuplicate({
+                        value: member,
+                        pickPosition: pickPositionState.value as PickPosition,
+                      })
+                        ? { backgroundColor: '#F3F3F3', color: 'darkGray' }
+                        : { backgroundColor: '#FFF', color: 'black' }
+                    }
                   >
                     <div className={S.playerUnit}>{member.name}</div>
                   </button>
@@ -157,7 +197,6 @@ function SelectPlayer() {
               disabled={playerList.length !== 10}
               type="button"
               onClick={() => {
-                console.log('playerList:', playerList);
                 moveToSelectClub();
               }}
               style={{
