@@ -5,7 +5,8 @@ import { useSearchParams, useRouter } from 'next/navigation';
 
 import { Suspense, useState } from 'react';
 import PlayGroundField, { PickPosition, PlayerUnit } from '@/components/PlayGroundField';
-import { EAGLES_PLAYER, KIA_PLAYER, KIWOOM_PLAYER, POSITION_LIST } from '@/consts/text';
+import { POSITION_LIST } from '@/consts/text';
+import getClubMembersList from '@/util/getClubMembersList';
 import * as S from './SelectPlayer.css';
 
 function SelectPlayer() {
@@ -15,7 +16,7 @@ function SelectPlayer() {
 
   const pickClubValue = pickClubInfo(urlClubName || 'kia');
 
-  const [pickPositionState, setPickPositionState] = useState(POSITION_LIST[0]);
+  const [pickPositionState, setPickPositionState] = useState(POSITION_LIST[0]); // 지금 선태되어있 요소 (선발투수 | 포수)
 
   const [playerList, setPlayerList] = useState<PlayerUnit[]>([]);
 
@@ -24,22 +25,9 @@ function SelectPlayer() {
     router.push(`/lineup?clubName=${urlClubName}`);
   };
 
-  const clubMembersList = (pickClubValueInClubMembersList: string) => {
-    if (pickClubValueInClubMembersList === 'eagles') {
-      return EAGLES_PLAYER;
-    }
-    if (pickClubValueInClubMembersList === 'kiwoom') {
-      return KIWOOM_PLAYER;
-    }
-    if (pickClubValueInClubMembersList === 'kia') {
-      return KIA_PLAYER;
-    }
+  const PLAYER_LIST = getClubMembersList(urlClubName || 'kia');
 
-    return EAGLES_PLAYER;
-  };
-
-  const PLAYER_LIST = clubMembersList(urlClubName || 'kia');
-
+  // TODO: 투수들만 포수들만 뽑아내는 로직.
   const pickMembersList = () => {
     if (
       pickPositionState.value === 'dh' &&
@@ -71,6 +59,7 @@ function SelectPlayer() {
   const membersList = pickMembersList();
 
   // TODO: 타입 분리하기
+  // 선수들 클릭했을 때
   const clickPlayer = (
     value: {
       name: string;
@@ -81,7 +70,6 @@ function SelectPlayer() {
     pickPosition: PickPosition,
   ) => {
     if (playerList.some(player => player.name === value.name)) {
-      // 제외하기
       const filteredPlayerList = playerList.filter(player => player.name !== value.name);
       setPlayerList(filteredPlayerList);
     } else {
@@ -122,7 +110,11 @@ function SelectPlayer() {
           width: '100%',
         }}
       >
-        <PlayGroundField playerList={playerList} />
+        <PlayGroundField
+          playerList={playerList}
+          pickPositionState={pickPositionState}
+          setPickPositionState={setPickPositionState}
+        />
         <div
           style={{
             backgroundColor: '#fff',
@@ -205,7 +197,10 @@ function SelectPlayer() {
                   ? {
                       backgroundColor: '#e0e0e0',
                     }
-                  : { backgroundColor: pickClubValue?.color.main }
+                  : ({
+                      '--button-hover-bg': pickClubValue?.color.hoverColor,
+                      '--button-bg': pickClubValue?.color.main,
+                    } as React.CSSProperties)
               }
             >
               SELECT

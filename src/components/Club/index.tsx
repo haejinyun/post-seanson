@@ -55,7 +55,6 @@ function Club() {
         >
           <span
             style={{
-              fontFamily: 'var(--font-kbo-bold)',
               fontSize: '17px',
               fontWeight: 700,
               color: '#27214D',
@@ -65,8 +64,6 @@ function Club() {
           </span>
           <span
             style={{
-              // fontFamily: 'var(--font-kbo-light)',
-              fontFamily: 'var(--font-kbo-medium)',
               fontSize: '14px',
               fontWeight: 500,
               color: '#27214D',

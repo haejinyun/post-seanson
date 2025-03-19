@@ -65,3 +65,21 @@ export const playerInfoSection = style({
 });
 
 export const playerName = style({ display: 'flex', fontSize: '13px', justifyContent: 'center' });
+
+export const buttonTest = style({
+  color: 'white',
+  fontSize: '14px',
+  fontWeight: 700,
+  padding: '16px 24px',
+  borderRadius: '10px',
+  border: 'none',
+  cursor: 'pointer',
+  width: '100%',
+  boxSizing: 'border-box',
+  backgroundColor: 'var(--button-bg)', // CSS 변수 사용
+  selectors: {
+    '&:hover': {
+      backgroundColor: 'var(--button-hover-bg)', // Hover 시 CSS 변수 적용
+    },
+  },
+});

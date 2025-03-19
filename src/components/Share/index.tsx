@@ -4,17 +4,14 @@ import html2canvas from 'html2canvas';
 import pickClubInfo from '@/util/getPickClubInfo';
 import { useSearchParams } from 'next/navigation';
 import { PlayerUnit } from '@/components/PlayGroundField';
-// import { AlignJustify } from 'lucide-react';
 import DraggableItem from '@/components/DragAbleUnit';
 import { Suspense, useCallback, useRef, useState } from 'react';
 import { DndProvider } from 'react-dnd';
 import * as HTML5toTouch from 'react-dnd-multi-backend'; // or any other pipeline
 import { HTML5Backend } from 'react-dnd-html5-backend';
 import PlayerListUnit from '@/components/lineup/PlayerListUnit';
-import saveAs from 'file-saver';
+// import saveAs from 'file-saver';
 import * as S from './LineUp.css';
-
-// useRouter
 
 function Share() {
   const searchParams = useSearchParams();
@@ -63,24 +60,47 @@ function Share() {
     });
   }, []);
 
-  console.log('groupedPlayers:', groupedPlayers);
-
   const divRef = useRef<HTMLDivElement>(null);
 
+  // const handleDownload = async () => {
+  //   if (!divRef.current) return;
+
+  //   try {
+  //     const div = divRef.current;
+  //     const canvas = await html2canvas(div, { scale: 2, useCORS: true });
+
+  //     // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  //     canvas.toBlob((blob: any) => {
+  //       if (blob !== null) {
+  //         saveAs(blob, 'result.png');
+  //       }
+  //     });
+  //   } catch (error) {
+  //     console.error('Error converting div to image:', error);
+  //   }
+  // };
+
+  console.log('mainPitcher:', mainPitcher);
+
   const handleDownload = async () => {
-    console.log('divRef:', divRef);
     if (!divRef.current) return;
 
     try {
       const div = divRef.current;
       const canvas = await html2canvas(div, { scale: 2, useCORS: true });
 
-      // eslint-disable-next-line @typescript-eslint/no-explicit-any
-      canvas.toBlob((blob: any) => {
-        if (blob !== null) {
-          saveAs(blob, 'result.png');
-        }
-      });
+      const imageData = canvas.toDataURL('image/png'); // Data URL 생성
+
+      const link = document.createElement('a');
+      link.href = imageData;
+      link.download = 'result.png';
+
+      // iOS의 경우 `download` 속성이 작동하지 않으므로 새 탭에서 열기
+      if (navigator.userAgent.match(/iPhone|iPad|iPod/i)) {
+        window.open(imageData, '_blank');
+      } else {
+        link.click();
+      }
     } catch (error) {
       console.error('Error converting div to image:', error);
     }
@@ -89,85 +109,71 @@ function Share() {
   return (
     <Suspense>
       <div className={S.container}>
-        <div className={S.header} style={{ backgroundColor: pickClubValue?.color.main }}>
-          Line up
-        </div>
-        <div className={S.containerWrapper}>
-          {/* //나누기 */}
-          <DndProvider options={HTML5toTouch} backend={HTML5Backend}>
-            <div className={S.listWrapper} ref={divRef}>
-              <div className={S.playerListWrapper}>
-                <PlayerListUnit
-                  index={0}
-                  player={mainPitcher}
-                  urlClubName={urlClubName || 'kia'}
-                  isShowIcon={false}
-                />
-                {groupedPlayers.batter.player.map((player, index) => {
-                  return (
-                    <DraggableItem
-                      // eslint-disable-next-line react/no-array-index-key
-                      key={`${player.name}-${index}`}
-                      id={player.name}
-                      index={index}
-                      moveCard={moveBatterPlayer}
-                    >
-                      <PlayerListUnit
-                        index={index}
-                        player={player}
-                        urlClubName={urlClubName || 'kia'}
-                      />
-                    </DraggableItem>
-                  );
-                })}
-              </div>
-            </div>
-          </DndProvider>
-          {/* //나누기 */}
-          <div style={{ display: 'flex', flexDirection: 'column', gap: '20px' }}>
-            <button
-              type="button"
-              onClick={handleDownload}
-              style={{
-                backgroundColor: pickClubValue?.color.main,
-                color: 'white',
-                fontSize: '14px',
-                fontWeight: 700,
-                padding: '16px 0',
-                borderRadius: '10px',
-                border: 'none',
-                cursor: 'pointer',
-                width: '100%',
-                boxSizing: 'border-box',
-                // '&:hover': {
-                //   backgroundColor: '#2DB88D',
-                // },
-              }}
-            >
-              IMAGE DOWNLOAD
-            </button>
-            <button
-              type="button"
-              onClick={handleDownload}
-              style={{
-                backgroundColor: pickClubValue?.color.main,
-                color: 'white',
-                fontSize: '14px',
-                fontWeight: 700,
-                padding: '16px 0',
-                borderRadius: '10px',
-                border: 'none',
-                cursor: 'pointer',
-                width: '100%',
-                boxSizing: 'border-box',
-                // '&:hover': {
-                //   backgroundColor: '#2DB88D',
-                // },
-              }}
-            >
-              SHARE
-            </button>
+        <div ref={divRef}>
+          <div className={S.header} style={{ backgroundColor: pickClubValue?.color.main }}>
+            Line up
           </div>
+          <div className={S.containerWrapper}>
+            {/* //나누기 */}
+            <DndProvider options={HTML5toTouch} backend={HTML5Backend}>
+              <div className={S.listWrapper}>
+                <div className={S.playerListWrapper}>
+                  <PlayerListUnit
+                    index={0}
+                    player={mainPitcher}
+                    urlClubName={urlClubName || 'kia'}
+                    isShowIcon={false}
+                    isPitcher
+                  />
+                  {groupedPlayers.batter.player.map((player, index) => {
+                    return (
+                      <DraggableItem
+                        // eslint-disable-next-line react/no-array-index-key
+                        key={`${player.name}-${index}`}
+                        id={player.name}
+                        index={index}
+                        moveCard={moveBatterPlayer}
+                      >
+                        <PlayerListUnit
+                          index={index}
+                          player={player}
+                          urlClubName={urlClubName || 'kia'}
+                        />
+                      </DraggableItem>
+                    );
+                  })}
+                </div>
+              </div>
+            </DndProvider>
+          </div>
+        </div>
+        <div className={S.containerWrapper} style={{ gap: '20px' }}>
+          <button
+            type="button"
+            onClick={handleDownload}
+            className={S.buttonTest}
+            style={
+              {
+                '--button-hover-bg': pickClubValue?.color.hoverColor,
+                '--button-bg': pickClubValue?.color.main,
+              } as React.CSSProperties
+            }
+          >
+            IMAGE DOWNLOAD
+          </button>
+          <button
+            type="button"
+            onClick={handleDownload}
+            className={S.buttonTest}
+            style={
+              {
+                '--button-hover-bg': pickClubValue?.color.hoverColor,
+                '--button-bg': pickClubValue?.color.main,
+              } as React.CSSProperties
+            }
+          >
+            SHARE
+          </button>
         </div>
       </div>
     </Suspense>

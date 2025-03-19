@@ -1,14 +1,9 @@
 import { style } from '@vanilla-extract/css';
 
 export const container = style({
-  // display: 'flex',
-  // flexDirection: 'column',
-
-  // boxSizing: 'border-box',
   minHeight: '100vh',
   height: '100%',
   margin: '0 auto',
-  // maxWidth: '450px',
   display: 'flex',
   flexDirection: 'column',
   width: '100%',
@@ -64,3 +59,21 @@ export const playerInfoSection = style({
 });
 
 export const playerName = style({ display: 'flex', justifyContent: 'center' });
+
+export const buttonTest = style({
+  color: 'white',
+  fontSize: '14px',
+  fontWeight: 700,
+  padding: '16px 0',
+  borderRadius: '10px',
+  border: 'none',
+  cursor: 'pointer',
+  width: '100%',
+  boxSizing: 'border-box',
+  backgroundColor: 'var(--button-bg)', // CSS 변수 사용
+  selectors: {
+    '&:hover': {
+      backgroundColor: 'var(--button-hover-bg)', // Hover 시 CSS 변수 적용
+    },
+  },
+});

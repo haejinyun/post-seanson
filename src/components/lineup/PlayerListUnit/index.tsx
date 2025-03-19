@@ -1,3 +1,4 @@
+/* eslint-disable react/require-default-props */
 import { AlignJustify } from 'lucide-react';
 import { PlayerUnit } from '@/components/PlayGroundField';
 import pickClubInfo from '@/util/getPickClubInfo';
@@ -9,9 +10,16 @@ interface PlayerListUnitProps {
   urlClubName: string;
   // eslint-disable-next-line react/require-default-props
   isShowIcon?: boolean;
+  isPitcher?: boolean;
 }
 
-function PlayerListUnit({ index, player, urlClubName, isShowIcon = true }: PlayerListUnitProps) {
+function PlayerListUnit({
+  index,
+  player,
+  urlClubName,
+  isShowIcon = true,
+  isPitcher = false,
+}: PlayerListUnitProps) {
   const pickClubValue = pickClubInfo(urlClubName);
 
   return (
@@ -23,7 +31,7 @@ function PlayerListUnit({ index, player, urlClubName, isShowIcon = true }: Playe
     >
       <div className={S.playerInfoSection}>
         <span className={S.playerName} style={{ color: pickClubValue?.color.main }}>
-          {index + 1}.
+          {isPitcher ? '선발투수' : `${index + 1}.`}
         </span>
         <img src={player.image} alt={player.name} style={{ width: '40px' }} />
         <span className={S.playerName}>{player.value}</span>

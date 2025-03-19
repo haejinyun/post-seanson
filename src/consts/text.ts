@@ -1,6 +1,9 @@
 import KiaImage from '@/assets/png/clubLogo/kia.png';
 import EaglesImage from '@/assets/png/clubLogo/eglse.png';
 import KiwoomImage from '@/assets/png/clubLogo/kiwoom.png';
+import BearsImage from '@/assets/png/clubLogo/bears.png';
+import SsgImage from '@/assets/png/clubLogo/landers.png';
+import LionsImage from '@/assets/png/clubLogo/lions.png';
 
 export const POSITION_LIST = [
   {
@@ -70,6 +73,21 @@ export const CLUBS = [
     name: '키움 히어로즈',
     value: 'kiwoom',
     logo: KiwoomImage,
+  },
+  {
+    name: '삼성 라이온즈',
+    value: 'lions',
+    logo: LionsImage,
+  },
+  {
+    name: 'SSG 랜더스',
+    value: 'ssg',
+    logo: SsgImage,
+  },
+  {
+    name: '두산 베어스',
+    value: 'doosan',
+    logo: BearsImage,
   },
 ];
 
@@ -842,6 +860,765 @@ export const EAGLES_PLAYER = [
         name: '이민재',
         position: '외야수',
         image: 'https://6ptotvmi5753.edge.naverncp.com/KBO_IMAGE/person/middle/2025/55710.jpg',
+        totalPosition: 'outfielder',
+      },
+    ],
+  },
+];
+
+export const SSG_PLAYER = [
+  {
+    position: 'pitcher',
+    playerList: [
+      {
+        name: '김건우',
+        position: '투수',
+        image: 'https://6ptotvmi5753.edge.naverncp.com/KBO_IMAGE/person/middle/2025/51867.jpg',
+        totalPosition: 'pitcher',
+      },
+      {
+        name: '김광현',
+        position: '투수',
+        image: 'https://6ptotvmi5753.edge.naverncp.com/KBO_IMAGE/person/middle/2025/77829.jpg',
+        totalPosition: 'pitcher',
+      },
+      {
+        name: '김민',
+        position: '투수',
+        image: 'https://6ptotvmi5753.edge.naverncp.com/KBO_IMAGE/person/middle/2025/68043.jpg',
+        totalPosition: 'pitcher',
+      },
+      {
+        name: '노경은',
+        position: '투수',
+        image: 'https://6ptotvmi5753.edge.naverncp.com/KBO_IMAGE/person/middle/2025/73211.jpg',
+        totalPosition: 'pitcher',
+      },
+      {
+        name: '앤더슨',
+        position: '투수',
+        image: 'https://6ptotvmi5753.edge.naverncp.com/KBO_IMAGE/person/middle/2025/54833.jpg',
+        totalPosition: 'pitcher',
+      },
+      {
+        name: '문승원',
+        position: '투수',
+        image: 'https://6ptotvmi5753.edge.naverncp.com/KBO_IMAGE/person/middle/2025/62869.jpg',
+        totalPosition: 'pitcher',
+      },
+      {
+        name: '화이트',
+        position: '투수',
+        image: 'https://6ptotvmi5753.edge.naverncp.com/KBO_IMAGE/person/middle/2025/55855.jpg',
+        totalPosition: 'pitcher',
+      },
+      {
+        name: '박성빈',
+        position: '투수',
+        image: 'https://6ptotvmi5753.edge.naverncp.com/KBO_IMAGE/person/middle/2025/54807.jpg',
+        totalPosition: 'pitcher',
+      },
+      {
+        name: '박시후',
+        position: '투수',
+        image: 'https://6ptotvmi5753.edge.naverncp.com/KBO_IMAGE/person/middle/2025/50812.jpg',
+        totalPosition: 'pitcher',
+      },
+      {
+        name: '박종훈',
+        position: '투수',
+        image: 'https://6ptotvmi5753.edge.naverncp.com/KBO_IMAGE/person/middle/2025/60841.jpg',
+        totalPosition: 'pitcher',
+      },
+      {
+        name: '서진용',
+        position: '투수',
+        image: 'https://6ptotvmi5753.edge.naverncp.com/KBO_IMAGE/person/middle/2025/61895.jpg',
+        totalPosition: 'pitcher',
+      },
+      {
+        name: '송영진',
+        position: '투수',
+        image: 'https://6ptotvmi5753.edge.naverncp.com/KBO_IMAGE/person/middle/2025/53898.jpg',
+        totalPosition: 'pitcher',
+      },
+      {
+        name: '신지환',
+        position: '투수',
+        image: 'https://6ptotvmi5753.edge.naverncp.com/KBO_IMAGE/person/middle/2025/55860.jpg',
+        totalPosition: 'pitcher',
+      },
+      {
+        name: '이로운',
+        position: '투수',
+        image: 'https://6ptotvmi5753.edge.naverncp.com/KBO_IMAGE/person/middle/2025/53892.jpg',
+        totalPosition: 'pitcher',
+      },
+      {
+        name: '전영준',
+        position: '투수',
+        image: 'https://6ptotvmi5753.edge.naverncp.com/KBO_IMAGE/person/middle/2025/52809.jpg',
+        totalPosition: 'pitcher',
+      },
+      {
+        name: '정동윤',
+        position: '투수',
+        image: 'https://6ptotvmi5753.edge.naverncp.com/KBO_IMAGE/person/middle/2025/66858.jpg',
+        totalPosition: 'pitcher',
+      },
+      {
+        name: '조병현',
+        position: '투수',
+        image: 'https://6ptotvmi5753.edge.naverncp.com/KBO_IMAGE/person/middle/2025/51897.jpg',
+        totalPosition: 'pitcher',
+      },
+      {
+        name: '천범석',
+        position: '투수',
+        image: 'https://6ptotvmi5753.edge.naverncp.com/KBO_IMAGE/person/middle/2025/55890.jpg',
+        totalPosition: 'pitcher',
+      },
+      {
+        name: '최현석',
+        position: '투수',
+        image: 'https://6ptotvmi5753.edge.naverncp.com/KBO_IMAGE/person/middle/2025/54803.jpg',
+        totalPosition: 'pitcher',
+      },
+      {
+        name: '한두솔',
+        position: '투수',
+        image: 'https://6ptotvmi5753.edge.naverncp.com/KBO_IMAGE/person/middle/2025/68092.jpg',
+        totalPosition: 'pitcher',
+      },
+    ],
+  },
+  {
+    position: 'catcher',
+    playerList: [
+      {
+        name: '신범수',
+        position: '포수',
+        image: 'https://6ptotvmi5753.edge.naverncp.com/KBO_IMAGE/person/middle/2025/66662.jpg',
+        totalPosition: 'catcher',
+      },
+      {
+        name: '이율예',
+        position: '포수',
+        image: 'https://6ptotvmi5753.edge.naverncp.com/KBO_IMAGE/person/middle/2025/55832.jpg',
+        totalPosition: 'catcher',
+      },
+      {
+        name: '조형우',
+        position: '포수',
+        image: 'https://6ptotvmi5753.edge.naverncp.com/KBO_IMAGE/person/middle/2025/51865.jpg',
+        totalPosition: 'catcher',
+      },
+    ],
+  },
+  {
+    position: 'infielder',
+    playerList: [
+      {
+        name: '고명준',
+        position: '내야수',
+        image: 'https://6ptotvmi5753.edge.naverncp.com/KBO_IMAGE/person/middle/2025/51868.jpg',
+        totalPosition: 'infielder',
+      },
+      {
+        name: '김성민',
+        position: '내야수',
+        image: 'https://6ptotvmi5753.edge.naverncp.com/KBO_IMAGE/person/middle/2025/50848.jpg',
+        totalPosition: 'infielder',
+      },
+      {
+        name: '박성한',
+        position: '내야수',
+        image: 'https://6ptotvmi5753.edge.naverncp.com/KBO_IMAGE/person/middle/2025/67893.jpg',
+        totalPosition: 'infielder',
+      },
+      {
+        name: '박지환',
+        position: '내야수',
+        image: 'https://6ptotvmi5753.edge.naverncp.com/KBO_IMAGE/person/middle/2025/54805.jpg',
+        totalPosition: 'infielder',
+      },
+      {
+        name: '석정우',
+        position: '내야수',
+        image: 'https://6ptotvmi5753.edge.naverncp.com/KBO_IMAGE/person/middle/2025/52804.jpg',
+        totalPosition: 'infielder',
+      },
+      {
+        name: '안상현',
+        position: '내야수',
+        image: 'https://6ptotvmi5753.edge.naverncp.com/KBO_IMAGE/person/middle/2025/66864.jpg',
+        totalPosition: 'infielder',
+      },
+      {
+        name: '정준재',
+        position: '내야수',
+        image: 'https://6ptotvmi5753.edge.naverncp.com/KBO_IMAGE/person/middle/2025/54812.jpg',
+        totalPosition: 'infielder',
+      },
+      {
+        name: '최준우',
+        position: '내야수',
+        image: 'https://6ptotvmi5753.edge.naverncp.com/KBO_IMAGE/person/middle/2025/68868.jpg',
+        totalPosition: 'infielder',
+      },
+    ],
+  },
+  {
+    position: 'outfielder',
+    playerList: [
+      {
+        name: '에레디아',
+        position: '외야수',
+        image: 'https://6ptotvmi5753.edge.naverncp.com/KBO_IMAGE/person/middle/2025/53827.jpg',
+        totalPosition: 'outfielder',
+      },
+      {
+        name: '이정범',
+        position: '외야수',
+        image: 'https://6ptotvmi5753.edge.naverncp.com/KBO_IMAGE/person/middle/2025/67807.jpg',
+        totalPosition: 'outfielder',
+      },
+      {
+        name: '최상민',
+        position: '외야수',
+        image: 'https://6ptotvmi5753.edge.naverncp.com/KBO_IMAGE/person/middle/2025/68805.jpg',
+        totalPosition: 'outfielder',
+      },
+      {
+        name: '최지훈',
+        position: '외야수',
+        image: 'https://6ptotvmi5753.edge.naverncp.com/KBO_IMAGE/person/middle/2025/50854.jpg',
+        totalPosition: 'outfielder',
+      },
+      {
+        name: '하재훈',
+        position: '외야수',
+        image: 'https://6ptotvmi5753.edge.naverncp.com/KBO_IMAGE/person/middle/2025/69813.jpg',
+        totalPosition: 'outfielder',
+      },
+    ],
+  },
+];
+
+export const LIONS_PLAYER = [
+  {
+    position: 'pitcher',
+    playerList: [
+      {
+        name: '오승환',
+        position: '투수',
+        image: 'https://6ptotvmi5753.edge.naverncp.com/KBO_IMAGE/person/middle/2025/75421.jpg',
+        totalPosition: 'pitcher',
+      },
+      {
+        name: '송은범',
+        position: '투수',
+        image: 'https://6ptotvmi5753.edge.naverncp.com/KBO_IMAGE/person/middle/2025/73801.jpg',
+        totalPosition: 'pitcher',
+      },
+      {
+        name: '임창민',
+        position: '투수',
+        image: 'https://6ptotvmi5753.edge.naverncp.com/KBO_IMAGE/person/middle/2025/78352.jpg',
+        totalPosition: 'pitcher',
+      },
+      {
+        name: '이상민',
+        position: '투수',
+        image: 'https://6ptotvmi5753.edge.naverncp.com/KBO_IMAGE/person/middle/2025/63960.jpg',
+        totalPosition: 'pitcher',
+      },
+      {
+        name: '김태훈',
+        position: '투수',
+        image: 'https://6ptotvmi5753.edge.naverncp.com/KBO_IMAGE/person/middle/2025/62360.jpg',
+        totalPosition: 'pitcher',
+      },
+      {
+        name: '이승현',
+        position: '투수',
+        image: 'https://6ptotvmi5753.edge.naverncp.com/KBO_IMAGE/person/middle/2025/60146.jpg',
+        totalPosition: 'pitcher',
+      },
+      {
+        name: '레예스',
+        position: '투수',
+        image: 'https://6ptotvmi5753.edge.naverncp.com/KBO_IMAGE/person/middle/2025/54443.jpg',
+        totalPosition: 'pitcher',
+      },
+      {
+        name: '후라도',
+        position: '투수',
+        image: 'https://6ptotvmi5753.edge.naverncp.com/KBO_IMAGE/person/middle/2025/53375.jpg',
+        totalPosition: 'pitcher',
+      },
+      {
+        name: '최원태',
+        position: '투수',
+        image: 'https://6ptotvmi5753.edge.naverncp.com/KBO_IMAGE/person/middle/2025/65320.jpg',
+        totalPosition: 'pitcher',
+      },
+      {
+        name: '김무신',
+        position: '투수',
+        image: 'https://6ptotvmi5753.edge.naverncp.com/KBO_IMAGE/person/middle/2025/68403.jpg',
+        totalPosition: 'pitcher',
+      },
+      {
+        name: '이승현좌',
+        position: '투수',
+        image: 'https://6ptotvmi5753.edge.naverncp.com/KBO_IMAGE/person/middle/2025/51454.jpg',
+        totalPosition: 'pitcher',
+      },
+      {
+        name: '이승민',
+        position: '투수',
+        image: 'https://6ptotvmi5753.edge.naverncp.com/KBO_IMAGE/person/middle/2025/50464.jpg',
+        totalPosition: 'pitcher',
+      },
+      {
+        name: '최하늘',
+        position: '투수',
+        image: 'https://6ptotvmi5753.edge.naverncp.com/KBO_IMAGE/person/middle/2025/68501.jpg',
+        totalPosition: 'pitcher',
+      },
+      {
+        name: '이재희',
+        position: '투수',
+        image: 'https://6ptotvmi5753.edge.naverncp.com/KBO_IMAGE/person/middle/2025/51460.jpg',
+        totalPosition: 'pitcher',
+      },
+      {
+        name: '김대호',
+        position: '투수',
+        image: 'https://6ptotvmi5753.edge.naverncp.com/KBO_IMAGE/person/middle/2025/54401.jpg',
+        totalPosition: 'pitcher',
+      },
+      {
+        name: '황동재',
+        position: '투수',
+        image: 'https://6ptotvmi5753.edge.naverncp.com/KBO_IMAGE/person/middle/2025/50441.jpg',
+        totalPosition: 'pitcher',
+      },
+      {
+        name: '육선엽',
+        position: '투수',
+        image: 'https://6ptotvmi5753.edge.naverncp.com/KBO_IMAGE/person/middle/2025/54404.jpg',
+        totalPosition: 'pitcher',
+      },
+      {
+        name: '배찬승',
+        position: '투수',
+        image: 'https://6ptotvmi5753.edge.naverncp.com/KBO_IMAGE/person/middle/2025/55455.jpg',
+        totalPosition: 'pitcher',
+      },
+    ],
+  },
+  {
+    position: 'catcher',
+    playerList: [
+      {
+        name: '김재성',
+        position: '포수',
+        image: 'https://6ptotvmi5753.edge.naverncp.com/KBO_IMAGE/person/middle/2025/65132.jpg',
+        totalPosition: 'catcher',
+      },
+      {
+        name: '이병헌',
+        position: '포수',
+        image: 'https://6ptotvmi5753.edge.naverncp.com/KBO_IMAGE/person/middle/2025/69428.jpg',
+        totalPosition: 'catcher',
+      },
+      {
+        name: '김도환',
+        position: '포수',
+        image: 'https://6ptotvmi5753.edge.naverncp.com/KBO_IMAGE/person/middle/2025/69442.jpg',
+        totalPosition: 'catcher',
+      },
+    ],
+  },
+  {
+    position: 'infielder',
+    playerList: [
+      {
+        name: '박병호',
+        position: '내야수',
+        image: 'https://6ptotvmi5753.edge.naverncp.com/KBO_IMAGE/person/middle/2025/75125.jpg',
+        totalPosition: 'infielder',
+      },
+      {
+        name: '전병우',
+        position: '내야수',
+        image: 'https://6ptotvmi5753.edge.naverncp.com/KBO_IMAGE/person/middle/2025/65586.jpg',
+        totalPosition: 'infielder',
+      },
+      {
+        name: '류지혁',
+        position: '내야수',
+        image: 'https://6ptotvmi5753.edge.naverncp.com/KBO_IMAGE/person/middle/2025/62234.jpg',
+        totalPosition: 'infielder',
+      },
+      {
+        name: '이재현',
+        position: '내야수',
+        image: 'https://6ptotvmi5753.edge.naverncp.com/KBO_IMAGE/person/middle/2025/52415.jpg',
+        totalPosition: 'infielder',
+      },
+      {
+        name: '김영웅',
+        position: '내야수',
+        image: 'https://6ptotvmi5753.edge.naverncp.com/KBO_IMAGE/person/middle/2025/52430.jpg',
+        totalPosition: 'infielder',
+      },
+      {
+        name: '심재훈',
+        position: '내야수',
+        image: 'https://6ptotvmi5753.edge.naverncp.com/KBO_IMAGE/person/middle/2025/55438.jpg',
+        totalPosition: 'infielder',
+      },
+      {
+        name: '차승준',
+        position: '내야수',
+        image: 'https://6ptotvmi5753.edge.naverncp.com/KBO_IMAGE/person/middle/2025/55435.jpg',
+        totalPosition: 'infielder',
+      },
+    ],
+  },
+  {
+    position: 'outfielder',
+    playerList: [
+      {
+        name: '김헌곤',
+        position: '외야수',
+        image: 'https://6ptotvmi5753.edge.naverncp.com/KBO_IMAGE/person/middle/2025/61404.jpg',
+        totalPosition: 'outfielder',
+      },
+      {
+        name: '이성규',
+        position: '외야수',
+        image: 'https://6ptotvmi5753.edge.naverncp.com/KBO_IMAGE/person/middle/2025/66409.jpg',
+        totalPosition: 'outfielder',
+      },
+      {
+        name: '윤정빈',
+        position: '외야수',
+        image: 'https://6ptotvmi5753.edge.naverncp.com/KBO_IMAGE/person/middle/2025/68463.jpg',
+        totalPosition: 'outfielder',
+      },
+      {
+        name: '김지찬',
+        position: '외야수',
+        image: 'https://6ptotvmi5753.edge.naverncp.com/KBO_IMAGE/person/middle/2025/50458.jpg',
+        totalPosition: 'outfielder',
+      },
+      {
+        name: '김성윤',
+        position: '외야수',
+        image: 'https://6ptotvmi5753.edge.naverncp.com/KBO_IMAGE/person/middle/2025/67449.jpg',
+        totalPosition: 'outfielder',
+      },
+      {
+        name: '박승규',
+        position: '외야수',
+        image: 'https://6ptotvmi5753.edge.naverncp.com/KBO_IMAGE/person/middle/2025/69418.jpg',
+        totalPosition: 'outfielder',
+      },
+      {
+        name: '함수호',
+        position: '외야수',
+        image: 'https://6ptotvmi5753.edge.naverncp.com/KBO_IMAGE/person/middle/2025/55440.jpg',
+        totalPosition: 'outfielder',
+      },
+    ],
+  },
+];
+
+export const DOOSAN_PLAYER = [
+  {
+    position: 'pitcher',
+    playerList: [
+      {
+        name: '곽빈',
+        position: '투수',
+        image: 'https://6ptotvmi5753.edge.naverncp.com/KBO_IMAGE/person/middle/2025/68220.jpg',
+        totalPosition: 'pitcher',
+      },
+      {
+        name: '권휘',
+        position: '투수',
+        image: 'https://6ptotvmi5753.edge.naverncp.com/KBO_IMAGE/person/middle/2025/50203.jpg',
+        totalPosition: 'pitcher',
+      },
+      {
+        name: '김명신',
+        position: '투수',
+        image: 'https://6ptotvmi5753.edge.naverncp.com/KBO_IMAGE/person/middle/2025/67246.jpg',
+        totalPosition: 'pitcher',
+      },
+      {
+        name: '김무빈',
+        position: '투수',
+        image: 'https://6ptotvmi5753.edge.naverncp.com/KBO_IMAGE/person/middle/2025/54215.jpg',
+        totalPosition: 'pitcher',
+      },
+      {
+        name: '김민규',
+        position: '투수',
+        image: 'https://6ptotvmi5753.edge.naverncp.com/KBO_IMAGE/person/middle/2025/68200.jpg',
+        totalPosition: 'pitcher',
+      },
+      {
+        name: '김유성',
+        position: '투수',
+        image: 'https://6ptotvmi5753.edge.naverncp.com/KBO_IMAGE/person/middle/2025/53262.jpg',
+        totalPosition: 'pitcher',
+      },
+      {
+        name: '김택연',
+        position: '투수',
+        image: 'https://6ptotvmi5753.edge.naverncp.com/KBO_IMAGE/person/middle/2025/54263.jpg',
+        totalPosition: 'pitcher',
+      },
+      {
+        name: '김호준',
+        position: '투수',
+        image: 'https://6ptotvmi5753.edge.naverncp.com/KBO_IMAGE/person/middle/2025/68269.jpg',
+        totalPosition: 'pitcher',
+      },
+      {
+        name: '박정수',
+        position: '투수',
+        image: 'https://6ptotvmi5753.edge.naverncp.com/KBO_IMAGE/person/middle/2025/65639.jpg',
+        totalPosition: 'pitcher',
+      },
+      {
+        name: '박지호',
+        position: '투수',
+        image: 'https://6ptotvmi5753.edge.naverncp.com/KBO_IMAGE/person/middle/2025/54213.jpg',
+        totalPosition: 'pitcher',
+      },
+      {
+        name: '박치국',
+        position: '투수',
+        image: 'https://6ptotvmi5753.edge.naverncp.com/KBO_IMAGE/person/middle/2025/67266.jpg',
+        totalPosition: 'pitcher',
+      },
+      {
+        name: '윤태호',
+        position: '투수',
+        image: 'https://6ptotvmi5753.edge.naverncp.com/KBO_IMAGE/person/middle/2025/52202.jpg',
+        totalPosition: 'pitcher',
+      },
+      {
+        name: '이병헌',
+        position: '투수',
+        image: 'https://6ptotvmi5753.edge.naverncp.com/KBO_IMAGE/person/middle/2025/52204.jpg',
+        totalPosition: 'pitcher',
+      },
+      {
+        name: '이영하',
+        position: '투수',
+        image: 'https://6ptotvmi5753.edge.naverncp.com/KBO_IMAGE/person/middle/2025/66291.jpg',
+        totalPosition: 'pitcher',
+      },
+      {
+        name: '잭로그',
+        position: '투수',
+        image: 'https://6ptotvmi5753.edge.naverncp.com/KBO_IMAGE/person/middle/2025/55239.jpg',
+        totalPosition: 'pitcher',
+      },
+      {
+        name: '최승용',
+        position: '투수',
+        image: 'https://6ptotvmi5753.edge.naverncp.com/KBO_IMAGE/person/middle/2025/51264.jpg',
+        totalPosition: 'pitcher',
+      },
+      {
+        name: '최원준',
+        position: '투수',
+        image: 'https://6ptotvmi5753.edge.naverncp.com/KBO_IMAGE/person/middle/2025/67263.jpg',
+        totalPosition: 'pitcher',
+      },
+      {
+        name: '최종인',
+        position: '투수',
+        image: 'https://6ptotvmi5753.edge.naverncp.com/KBO_IMAGE/person/middle/2025/50206.jpg',
+        totalPosition: 'pitcher',
+      },
+      {
+        name: '최준호',
+        position: '투수',
+        image: 'https://6ptotvmi5753.edge.naverncp.com/KBO_IMAGE/person/middle/2025/53259.jpg',
+        totalPosition: 'pitcher',
+      },
+      {
+        name: '콜어빈',
+        position: '투수',
+        image: 'https://6ptotvmi5753.edge.naverncp.com/KBO_IMAGE/person/middle/2025/55257.jpg',
+        totalPosition: 'pitcher',
+      },
+      {
+        name: '홍건희',
+        position: '투수',
+        image: 'https://6ptotvmi5753.edge.naverncp.com/KBO_IMAGE/person/middle/2025/61643.jpg',
+        totalPosition: 'pitcher',
+      },
+      {
+        name: '홍민규',
+        position: '투수',
+        image: 'https://6ptotvmi5753.edge.naverncp.com/KBO_IMAGE/person/middle/2025/55267.jpg',
+        totalPosition: 'pitcher',
+      },
+    ],
+  },
+  {
+    position: 'catcher',
+    playerList: [
+      {
+        name: '김기연',
+        position: '포수',
+        image: 'https://6ptotvmi5753.edge.naverncp.com/KBO_IMAGE/person/middle/2025/66112.jpg',
+        totalPosition: 'catcher',
+      },
+      {
+        name: '류현준',
+        position: '포수',
+        image: 'https://6ptotvmi5753.edge.naverncp.com/KBO_IMAGE/person/middle/2025/54219.jpg',
+        totalPosition: 'catcher',
+      },
+      {
+        name: '박민준',
+        position: '포수',
+        image: 'https://6ptotvmi5753.edge.naverncp.com/KBO_IMAGE/person/middle/2025/53204.jpg',
+        totalPosition: 'catcher',
+      },
+      {
+        name: '양의지',
+        position: '포수',
+        image: 'https://6ptotvmi5753.edge.naverncp.com/KBO_IMAGE/person/middle/2025/76232.jpg',
+        totalPosition: 'catcher',
+      },
+    ],
+  },
+  {
+    position: 'infielder',
+    playerList: [
+      {
+        name: '강승호',
+        position: '내야수',
+        image: 'https://6ptotvmi5753.edge.naverncp.com/KBO_IMAGE/person/middle/2025/63123.jpg',
+        totalPosition: 'infielder',
+      },
+      {
+        name: '김동준',
+        position: '내야수',
+        image: 'https://6ptotvmi5753.edge.naverncp.com/KBO_IMAGE/person/middle/2025/52267.jpg',
+        totalPosition: 'infielder',
+      },
+      {
+        name: '박준순',
+        position: '내야수',
+        image: 'https://6ptotvmi5753.edge.naverncp.com/KBO_IMAGE/person/middle/2025/55252.jpg',
+        totalPosition: 'infielder',
+      },
+      {
+        name: '박지훈',
+        position: '내야수',
+        image: 'https://6ptotvmi5753.edge.naverncp.com/KBO_IMAGE/person/middle/2025/50204.jpg',
+        totalPosition: 'infielder',
+      },
+      {
+        name: '양석환',
+        position: '내야수',
+        image: 'https://6ptotvmi5753.edge.naverncp.com/KBO_IMAGE/person/middle/2025/64153.jpg',
+        totalPosition: 'infielder',
+      },
+      {
+        name: '여동건',
+        position: '내야수',
+        image: 'https://6ptotvmi5753.edge.naverncp.com/KBO_IMAGE/person/middle/2025/54205.jpg',
+        totalPosition: 'infielder',
+      },
+      {
+        name: '오명진',
+        position: '내야수',
+        image: 'https://6ptotvmi5753.edge.naverncp.com/KBO_IMAGE/person/middle/2025/50208.jpg',
+        totalPosition: 'infielder',
+      },
+      {
+        name: '이유찬',
+        position: '내야수',
+        image: 'https://6ptotvmi5753.edge.naverncp.com/KBO_IMAGE/person/middle/2025/67207.jpg',
+        totalPosition: 'infielder',
+      },
+      {
+        name: '임종성',
+        position: '내야수',
+        image: 'https://6ptotvmi5753.edge.naverncp.com/KBO_IMAGE/person/middle/2025/54236.jpg',
+        totalPosition: 'infielder',
+      },
+    ],
+  },
+  {
+    position: 'outfielder',
+    playerList: [
+      {
+        name: '강현구',
+        position: '외야수',
+        image: 'https://6ptotvmi5753.edge.naverncp.com/KBO_IMAGE/person/middle/2025/51269.jpg',
+        totalPosition: 'outfielder',
+      },
+      {
+        name: '김대한',
+        position: '외야수',
+        image: 'https://6ptotvmi5753.edge.naverncp.com/KBO_IMAGE/person/middle/2025/69238.jpg',
+        totalPosition: 'outfielder',
+      },
+      {
+        name: '김민석',
+        position: '외야수',
+        image: 'https://6ptotvmi5753.edge.naverncp.com/KBO_IMAGE/person/middle/2025/53554.jpg',
+        totalPosition: 'outfielder',
+      },
+      {
+        name: '김재환',
+        position: '외야수',
+        image: 'https://6ptotvmi5753.edge.naverncp.com/KBO_IMAGE/person/middle/2025/78224.jpg',
+        totalPosition: 'outfielder',
+      },
+      {
+        name: '전다민',
+        position: '외야수',
+        image: 'https://6ptotvmi5753.edge.naverncp.com/KBO_IMAGE/person/middle/2025/54214.jpg',
+        totalPosition: 'outfielder',
+      },
+      {
+        name: '정수빈',
+        position: '외야수',
+        image: 'https://6ptotvmi5753.edge.naverncp.com/KBO_IMAGE/person/middle/2025/79231.jpg',
+        totalPosition: 'outfielder',
+      },
+      {
+        name: '조수행',
+        position: '외야수',
+        image: 'https://6ptotvmi5753.edge.naverncp.com/KBO_IMAGE/person/middle/2025/66209.jpg',
+        totalPosition: 'outfielder',
+      },
+      {
+        name: '추재현',
+        position: '외야수',
+        image: 'https://6ptotvmi5753.edge.naverncp.com/KBO_IMAGE/person/middle/2025/68362.jpg',
+        totalPosition: 'outfielder',
+      },
+      {
+        name: '케이브',
+        position: '외야수',
+        image: 'https://6ptotvmi5753.edge.naverncp.com/KBO_IMAGE/person/middle/2025/55208.jpg',
         totalPosition: 'outfielder',
       },
     ],

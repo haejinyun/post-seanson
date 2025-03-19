@@ -118,29 +118,14 @@ function LineUp() {
           {/* //나누기 */}
           <button
             type="button"
-            // onClick={() => {
-            //   console.log('playerList:', playerList);
-            //   handleDownload();
-            //   // moveToSelectClub();
-            // }}
             onClick={handleDownload}
-            style={{
-              backgroundColor: pickClubValue?.color.main,
-              color: 'white',
-              fontSize: '14px',
-              fontWeight: 700,
-              padding: '16px 24px',
-
-              borderRadius: '10px',
-              border: 'none',
-              cursor: 'pointer',
-              width: '100%',
-              boxSizing: 'border-box',
-              // padding: '55px 24px 24px 24px',
-              // '&:hover': {
-              //   backgroundColor: '#2DB88D',
-              // },
-            }}
+            className={S.buttonTest}
+            style={
+              {
+                '--button-hover-bg': pickClubValue?.color.hoverColor,
+                '--button-bg': pickClubValue?.color.main,
+              } as React.CSSProperties
+            }
           >
             SUBMIT
           </button>

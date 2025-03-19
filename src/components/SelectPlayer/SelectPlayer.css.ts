@@ -59,10 +59,11 @@ export const moveButton = style({
   cursor: 'pointer',
   width: '100%',
   boxSizing: 'border-box',
-  ':hover': {
-    // backgroundColor: '#2DB88D',
-  },
+  backgroundColor: 'var(--button-bg)', // CSS 변수 사용
   selectors: {
+    '&:hover': {
+      backgroundColor: 'var(--button-hover-bg)', // Hover 시 CSS 변수 적용
+    },
     '&[disabled]': {
       color: '#a0a0a0',
       cursor: 'not-allowed',
