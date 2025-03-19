@@ -7,9 +7,11 @@ interface PlayerListUnitProps {
   index: number;
   player: PlayerUnit;
   urlClubName: string;
+  // eslint-disable-next-line react/require-default-props
+  isShowIcon?: boolean;
 }
 
-function PlayerListUnit({ index, player, urlClubName }: PlayerListUnitProps) {
+function PlayerListUnit({ index, player, urlClubName, isShowIcon = true }: PlayerListUnitProps) {
   const pickClubValue = pickClubInfo(urlClubName);
 
   return (
@@ -28,14 +30,16 @@ function PlayerListUnit({ index, player, urlClubName }: PlayerListUnitProps) {
         <span className={S.playerName}>|</span>
         <span className={S.playerName}>{player.name}</span>
       </div>
-      <AlignJustify
-        style={{
-          marginLeft: 'auto',
-          cursor: 'pointer',
-          color: pickClubValue?.color.main,
-          width: '24px',
-        }}
-      />
+      {isShowIcon && (
+        <AlignJustify
+          style={{
+            marginLeft: 'auto',
+            cursor: 'pointer',
+            color: pickClubValue?.color.main,
+            width: '24px',
+          }}
+        />
+      )}
     </div>
   );
 }

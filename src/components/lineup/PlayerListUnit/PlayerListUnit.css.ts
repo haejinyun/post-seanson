@@ -10,7 +10,7 @@ export const playerUnit = style({
 export const playerInfoSection = style({
   display: 'flex',
   alignItems: 'center',
-  gap: '8px',
+  gap: '12px',
 });
 
-export const playerName = style({ display: 'flex', justifyContent: 'center' });
+export const playerName = style({ display: 'flex', fontSize: '13px', justifyContent: 'center' });

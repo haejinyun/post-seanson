@@ -7,8 +7,16 @@ import { PlayerUnit } from '@/components/PlayGroundField';
 import DraggableItem from '@/components/DragAbleUnit';
 import { Suspense, useCallback, useRef, useState } from 'react';
 import { DndProvider } from 'react-dnd';
-import { HTML5Backend } from 'react-dnd-html5-backend';
+import { TouchBackend } from 'react-dnd-touch-backend';
+
+// import { DndProvider } from 'react-dnd-multi-backend';
+// import { HTML5Backend } from 'react-dnd-html5-backend';
 import PlayerListUnit from '@/components/lineup/PlayerListUnit';
+// import HTML5toTouch from 'react-dnd-multi-backend/dist/esm/HTML5toTouch';
+// import * as HTML5toTouch from 'react-dnd-multi-backend'; // or any other pipeline
+// import { HTML5toTouch } from 'react-dnd-multi-backend';
+// /dist/esm/HTML5toTouch';
+
 import * as S from './LineUp.css';
 
 // useRouter
@@ -59,26 +67,10 @@ function LineUp() {
     });
   }, []);
 
-  console.log('groupedPlayers:', groupedPlayers);
-
   const divRef = useRef<HTMLDivElement>(null);
 
   const handleDownload = () => {
     router.push(`/share?clubName=${urlClubName}`);
-    // console.log('divRef:', divRef);
-    // if (!divRef.current) return;
-    // try {
-    //   const div = divRef.current;
-    //   const canvas = await html2canvas(div, { scale: 2, useCORS: true });
-    //   // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    //   canvas.toBlob((blob: any) => {
-    //     if (blob !== null) {
-    //       saveAs(blob, 'result.png');
-    //     }
-    //   });
-    // } catch (error) {
-    //   console.error('Error converting div to image:', error);
-    // }
   };
 
   return (
@@ -89,24 +81,20 @@ function LineUp() {
         </div>
         <div className={S.containerWrapper}>
           {/* //나누기 */}
-          <DndProvider backend={HTML5Backend}>
+          <DndProvider backend={TouchBackend}>
+            {/* backend={HTML5Backend} */}
             <div
               className={S.listWrapper}
               style={{ backgroundColor: pickClubValue?.color.bright }}
               ref={divRef}
             >
               <div className={S.playerListWrapper}>
-                <div className={S.playerUnit} style={{ borderColor: pickClubValue?.color.main }}>
-                  <div className={S.playerInfoSection}>
-                    <span className={S.playerName} style={{ color: pickClubValue?.color.main }}>
-                      선발투수
-                    </span>
-                    <img src={mainPitcher.image} alt={mainPitcher.name} style={{ width: '40px' }} />
-                    <span className={S.playerName}>{mainPitcher.value}</span>
-                    <span className={S.playerName}>|</span>
-                    <span className={S.playerName}>{mainPitcher.name}</span>
-                  </div>
-                </div>
+                <PlayerListUnit
+                  index={0}
+                  player={mainPitcher}
+                  urlClubName={urlClubName || 'kia'}
+                  isShowIcon={false}
+                />
                 {groupedPlayers.batter.player.map((player, index) => {
                   return (
                     <DraggableItem

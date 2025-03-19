@@ -48,7 +48,7 @@ function SelectPlayer() {
       )
     ) {
       const first = PLAYER_LIST.filter(
-        player => player.position === 'outfielder' || player.position === 'infield',
+        player => player.position === 'outfielder' || player.position === 'infielder',
       );
 
       const mergeList = first.reduce
@@ -194,26 +194,19 @@ function SelectPlayer() {
               </div>
             </div>
             <button
-              disabled={playerList.length !== 10}
+              disabled={playerList.length < 10}
               type="button"
               onClick={() => {
                 moveToSelectClub();
               }}
-              style={{
-                backgroundColor: pickClubValue?.color.main,
-                color: 'white',
-                fontSize: '14px',
-                fontWeight: 700,
-                padding: '16px 0',
-                borderRadius: '10px',
-                border: 'none',
-                cursor: 'pointer',
-                width: '100%',
-                boxSizing: 'border-box',
-                // '&:hover': {
-                //   backgroundColor: '#2DB88D',
-                // },
-              }}
+              className={S.moveButton}
+              style={
+                playerList.length !== 10
+                  ? {
+                      backgroundColor: '#e0e0e0',
+                    }
+                  : { backgroundColor: pickClubValue?.color.main }
+              }
             >
               SELECT
             </button>

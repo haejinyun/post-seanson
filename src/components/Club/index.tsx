@@ -53,10 +53,25 @@ function Club() {
             gap: '50px',
           }}
         >
-          <span style={{ fontSize: '16px', fontWeight: 700, color: '#27214D' }}>
+          <span
+            style={{
+              fontFamily: 'var(--font-kbo-bold)',
+              fontSize: '17px',
+              fontWeight: 700,
+              color: '#27214D',
+            }}
+          >
             내가 선택하는 라인업
           </span>
-          <span style={{ fontSize: '14px', fontWeight: 500, color: '#27214D' }}>
+          <span
+            style={{
+              // fontFamily: 'var(--font-kbo-light)',
+              fontFamily: 'var(--font-kbo-medium)',
+              fontSize: '14px',
+              fontWeight: 500,
+              color: '#27214D',
+            }}
+          >
             전력을 분석하고 라인업을 구성해봐요!
             <br />
             응원하는 구단의 라인업을 만들고 공유해봐요.

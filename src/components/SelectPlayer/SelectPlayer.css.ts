@@ -48,18 +48,24 @@ export const playerUnit = style({
     backgroundColor: '#F3F3F3',
   },
 });
-// export const moveButton = style({positionListWrapper
-//   backgroundColor: pickClubValue?.color.main,
-//   color: 'white',
-//   fontSize: '14px',
-//   fontWeight: 700,
-//   padding: '16px 0',
-//   borderRadius: '10px',
-//   border: 'none',
-//   cursor: 'pointer',
-//   width: '100%',
-//   boxSizing: 'border-box',
-//   // '&:hover': {
-//   //   backgroundColor: '#2DB88D',
-//   // },
-// });
+
+export const moveButton = style({
+  color: 'white',
+  fontSize: '14px',
+  fontWeight: 700,
+  padding: '16px 0',
+  borderRadius: '10px',
+  border: 'none',
+  cursor: 'pointer',
+  width: '100%',
+  boxSizing: 'border-box',
+  ':hover': {
+    // backgroundColor: '#2DB88D',
+  },
+  selectors: {
+    '&[disabled]': {
+      color: '#a0a0a0',
+      cursor: 'not-allowed',
+    },
+  },
+});

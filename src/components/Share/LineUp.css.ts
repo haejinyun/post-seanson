@@ -21,6 +21,7 @@ export const containerWrapper = style({
   minWidth: '320px',
   width: '100%',
   maxWidth: '450px',
+  boxSizing: 'border-box',
   padding: '0px 0px 24px 0px',
 });
 

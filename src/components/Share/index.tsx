@@ -8,6 +8,7 @@ import { PlayerUnit } from '@/components/PlayGroundField';
 import DraggableItem from '@/components/DragAbleUnit';
 import { Suspense, useCallback, useRef, useState } from 'react';
 import { DndProvider } from 'react-dnd';
+import * as HTML5toTouch from 'react-dnd-multi-backend'; // or any other pipeline
 import { HTML5Backend } from 'react-dnd-html5-backend';
 import PlayerListUnit from '@/components/lineup/PlayerListUnit';
 import saveAs from 'file-saver';
@@ -87,30 +88,21 @@ function Share() {
 
   return (
     <Suspense>
-      <div className={S.container} style={{ backgroundColor: pickClubValue?.color.bright }}>
+      <div className={S.container}>
+        <div className={S.header} style={{ backgroundColor: pickClubValue?.color.main }}>
+          Line up
+        </div>
         <div className={S.containerWrapper}>
           {/* //나누기 */}
-          <DndProvider backend={HTML5Backend}>
-            <div
-              className={S.listWrapper}
-              style={{ backgroundColor: pickClubValue?.color.bright }}
-              ref={divRef}
-            >
-              <div className={S.header} style={{ backgroundColor: pickClubValue?.color.main }}>
-                Line up
-              </div>
+          <DndProvider options={HTML5toTouch} backend={HTML5Backend}>
+            <div className={S.listWrapper} ref={divRef}>
               <div className={S.playerListWrapper}>
-                <div className={S.playerUnit} style={{ borderColor: pickClubValue?.color.main }}>
-                  <div className={S.playerInfoSection}>
-                    <span className={S.playerName} style={{ color: pickClubValue?.color.main }}>
-                      선발투수
-                    </span>
-                    <img src={mainPitcher.image} alt={mainPitcher.name} style={{ width: '40px' }} />
-                    <span className={S.playerName}>{mainPitcher.value}</span>
-                    <span className={S.playerName}>|</span>
-                    <span className={S.playerName}>{mainPitcher.name}</span>
-                  </div>
-                </div>
+                <PlayerListUnit
+                  index={0}
+                  player={mainPitcher}
+                  urlClubName={urlClubName || 'kia'}
+                  isShowIcon={false}
+                />
                 {groupedPlayers.batter.player.map((player, index) => {
                   return (
                     <DraggableItem
