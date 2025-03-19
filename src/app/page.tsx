@@ -1,95 +1,69 @@
+'use client';
+
+import logo from '@/assets/png/iconLogo.png';
+
 import Image from 'next/image';
-import styles from './page.module.css';
+import { useRouter } from 'next/navigation';
+import { useEffect } from 'react';
 
 export default function Home() {
-  return (
-    <div className={styles.page}>
-      <main className={styles.main}>
-        <Image
-          className={styles.logo}
-          src="https://nextjs.org/icons/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol>
-          <li>
-            Get started by editing <code>src/app/page.tsx</code>.
-          </li>
-          <li>Save and see your changes instantly.</li>
-        </ol>
+  const router = useRouter();
 
-        <div className={styles.ctas}>
-          <a
-            className={styles.primary}
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      router.replace('/club'); // 1초 후 /home으로 리다이렉트
+    }, 1000); // 1초 동안 스플래시 화면을 보여줌
+
+    return () => clearTimeout(timer);
+  }, [router]);
+
+  return (
+    <div
+      style={{
+        backgroundColor: '#F2F3F6',
+      }}
+    >
+      <div
+        style={{
+          maxWidth: '450px',
+          width: '100%',
+          height: '100vh',
+          margin: '0 auto',
+        }}
+      >
+        <div
+          style={{
+            textAlign: 'center',
+            backgroundColor: '#F2F3F6',
+            height: '100%',
+            display: 'flex',
+            flexDirection: 'column',
+            justifyContent: 'space-between',
+            padding: '280px 0 30px 0',
+            boxSizing: 'border-box',
+          }}
+        >
+          <div
+            style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '24px' }}
           >
-            <Image
-              className={styles.logo}
-              src="https://nextjs.org/icons/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-            className={styles.secondary}
-          >
-            Read our docs
-          </a>
+            <div style={{ width: '200px', height: '200px', margin: '0 auto' }}>
+              <Image
+                src={logo}
+                alt="Logo"
+                width={200}
+                height={200}
+                style={{ width: '100%', height: '100%', objectFit: 'contain' }}
+              />
+            </div>
+            <span style={{ fontSize: '20px', fontWeight: '700', color: '#27214D' }}>
+              POST SEASON
+            </span>
+          </div>
+          <span style={{ fontSize: '12px', fontWeight: '500', color: '#7A7A7A' }}>
+            ⓒ2025. POST SEASON. All rights reserved.
+          </span>
         </div>
-      </main>
-      <footer className={styles.footer}>
-        <a
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="https://nextjs.org/icons/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="https://nextjs.org/icons/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="https://nextjs.org/icons/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
+      </div>
     </div>
   );
 }
