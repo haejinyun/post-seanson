@@ -98,6 +98,7 @@ function Share() {
 
       // iOS에서는 document.body.appendChild를 하지 않고 click() 호출해야 함
       document.body.appendChild(link);
+      link.setAttribute('target', '_blank');
       link.click();
       document.body.removeChild(link);
     } catch (error) {
@@ -146,7 +147,7 @@ function Share() {
             </DndProvider>
           </div>
         </div>
-        <div className={S.containerWrapper} style={{ gap: '20px' }}>
+        <div className={S.buttonContainerWrapper} style={{ gap: '20px' }}>
           <button
             type="button"
             onClick={handleDownloadPrev}

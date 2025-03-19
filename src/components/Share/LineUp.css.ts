@@ -20,6 +20,17 @@ export const containerWrapper = style({
   padding: '0px 0px 24px 0px',
 });
 
+export const buttonContainerWrapper = style({
+  display: 'flex',
+  flexDirection: 'column',
+  margin: '0 auto',
+  minWidth: '320px',
+  width: '100%',
+  maxWidth: '450px',
+  boxSizing: 'border-box',
+  padding: '0px 24px 24px 24px',
+});
+
 export const header = style({
   display: 'flex',
   justifyContent: 'center',
