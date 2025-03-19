@@ -94,6 +94,7 @@ function LineUp() {
                   player={mainPitcher}
                   urlClubName={urlClubName || 'kia'}
                   isShowIcon={false}
+                  isPitcher
                 />
                 {groupedPlayers.batter.player.map((player, index) => {
                   return (

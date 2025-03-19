@@ -10,7 +10,8 @@ import { DndProvider } from 'react-dnd';
 import * as HTML5toTouch from 'react-dnd-multi-backend'; // or any other pipeline
 import { HTML5Backend } from 'react-dnd-html5-backend';
 import PlayerListUnit from '@/components/lineup/PlayerListUnit';
-// import saveAs from 'file-saver';
+// import downloadImage from '@/util/downloadImage';
+import saveAs from 'file-saver';
 import * as S from './LineUp.css';
 
 function Share() {
@@ -62,23 +63,23 @@ function Share() {
 
   const divRef = useRef<HTMLDivElement>(null);
 
-  // const handleDownload = async () => {
-  //   if (!divRef.current) return;
+  const handleDownloadPrev = async () => {
+    if (!divRef.current) return;
 
-  //   try {
-  //     const div = divRef.current;
-  //     const canvas = await html2canvas(div, { scale: 2, useCORS: true });
+    try {
+      const div = divRef.current;
+      const canvas = await html2canvas(div, { scale: 2, useCORS: true });
 
-  //     // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  //     canvas.toBlob((blob: any) => {
-  //       if (blob !== null) {
-  //         saveAs(blob, 'result.png');
-  //       }
-  //     });
-  //   } catch (error) {
-  //     console.error('Error converting div to image:', error);
-  //   }
-  // };
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      canvas.toBlob((blob: any) => {
+        if (blob !== null) {
+          saveAs(blob, 'result.png');
+        }
+      });
+    } catch (error) {
+      console.error('Error converting div to image:', error);
+    }
+  };
 
   console.log('mainPitcher:', mainPitcher);
 
@@ -86,23 +87,21 @@ function Share() {
     if (!divRef.current) return;
 
     try {
-      const div = divRef.current;
-      const canvas = await html2canvas(div, { scale: 2, useCORS: true });
+      const canvas = await html2canvas(divRef.current, { scale: 2, useCORS: true });
 
-      const imageData = canvas.toDataURL('image/png'); // Data URL 생성
+      // iOS에서 정상적으로 작동하도록 Data URL 방식 사용
+      const imageData = canvas.toDataURL('image/png');
 
       const link = document.createElement('a');
       link.href = imageData;
       link.download = 'result.png';
 
-      // iOS의 경우 `download` 속성이 작동하지 않으므로 새 탭에서 열기
-      if (navigator.userAgent.match(/iPhone|iPad|iPod/i)) {
-        window.open(imageData, '_blank');
-      } else {
-        link.click();
-      }
+      // iOS에서는 document.body.appendChild를 하지 않고 click() 호출해야 함
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
     } catch (error) {
-      console.error('Error converting div to image:', error);
+      console.error('Error capturing and downloading image:', error);
     }
   };
 
@@ -150,7 +149,7 @@ function Share() {
         <div className={S.containerWrapper} style={{ gap: '20px' }}>
           <button
             type="button"
-            onClick={handleDownload}
+            onClick={handleDownloadPrev}
             className={S.buttonTest}
             style={
               {
