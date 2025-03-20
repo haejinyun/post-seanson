@@ -11,7 +11,7 @@ import * as HTML5toTouch from 'react-dnd-multi-backend'; // or any other pipelin
 import { HTML5Backend } from 'react-dnd-html5-backend';
 import PlayerListUnit from '@/components/lineup/PlayerListUnit';
 // import downloadImage from '@/util/downloadImage';
-import saveAs from 'file-saver';
+// import saveAs from 'file-saver';
 import * as S from './LineUp.css';
 
 function Share() {
@@ -63,23 +63,23 @@ function Share() {
 
   const divRef = useRef<HTMLDivElement>(null);
 
-  const handleDownloadPrev = async () => {
-    if (!divRef.current) return;
+  // const handleDownloadPrev = async () => {
+  //   if (!divRef.current) return;
 
-    try {
-      const div = divRef.current;
-      const canvas = await html2canvas(div, { scale: 2, useCORS: true });
+  //   try {
+  //     const div = divRef.current;
+  //     const canvas = await html2canvas(div, { scale: 2, useCORS: true });
 
-      // eslint-disable-next-line @typescript-eslint/no-explicit-any
-      canvas.toBlob((blob: any) => {
-        if (blob !== null) {
-          saveAs(blob, 'result.png');
-        }
-      });
-    } catch (error) {
-      console.error('Error converting div to image:', error);
-    }
-  };
+  //     // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  //     canvas.toBlob((blob: any) => {
+  //       if (blob !== null) {
+  //         saveAs(blob, 'result.png');
+  //       }
+  //     });
+  //   } catch (error) {
+  //     console.error('Error converting div to image:', error);
+  //   }
+  // };
 
   console.log('mainPitcher:', mainPitcher);
 
@@ -150,7 +150,7 @@ function Share() {
         <div className={S.buttonContainerWrapper} style={{ gap: '20px' }}>
           <button
             type="button"
-            onClick={handleDownloadPrev}
+            onClick={handleDownload}
             className={S.buttonTest}
             style={
               {
@@ -161,7 +161,7 @@ function Share() {
           >
             IMAGE DOWNLOAD
           </button>
-          <button
+          {/* <button
             type="button"
             onClick={handleDownload}
             className={S.buttonTest}
@@ -173,7 +173,7 @@ function Share() {
             }
           >
             SHARE
-          </button>
+          </button> */}
         </div>
       </div>
     </Suspense>
