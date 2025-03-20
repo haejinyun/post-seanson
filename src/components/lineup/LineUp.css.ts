@@ -14,11 +14,22 @@ export const container = style({
   width: '100%',
 });
 
+export const backLogoWrapper = style({
+  position: 'absolute',
+  top: '40%',
+  left: '50%',
+  transform: 'translate(-50%, -50%)',
+  zIndex: 1,
+});
+
 export const containerWrapper = style({
+  // zIndex: 2,
+  position: 'relative',
   display: 'flex',
   flexDirection: 'column',
   margin: '0 auto',
   minWidth: '320px',
+  backgroundColor: '  #F2F3F6',
   width: '100%',
   maxWidth: '450px',
   padding: '0px 24px 24px 24px',
@@ -41,12 +52,13 @@ export const header = style({
 export const listWrapper = style({
   display: 'flex',
   flexDirection: 'column',
+  zIndex: 2,
 });
 
 export const playerListWrapper = style({
   display: 'flex',
   flexDirection: 'column',
-  backgroundColor: '#fff',
+  // backgroundColor: '#F2F3F6',
 });
 
 export const dateTitle = style({ display: 'flex', justifyContent: 'center' });

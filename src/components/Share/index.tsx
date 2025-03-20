@@ -138,6 +138,7 @@ function Share() {
                           index={index}
                           player={player}
                           urlClubName={urlClubName || 'kia'}
+                          isShowIcon={false}
                         />
                       </DraggableItem>
                     );

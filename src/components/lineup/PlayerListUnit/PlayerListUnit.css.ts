@@ -5,6 +5,7 @@ export const playerUnit = style({
   boxSizing: 'border-box',
   display: 'flex',
   alignItems: 'center',
+  backgroundColor: 'transparent',
 });
 
 export const playerInfoSection = style({

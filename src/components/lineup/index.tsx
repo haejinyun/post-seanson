@@ -8,7 +8,7 @@ import DraggableItem from '@/components/DragAbleUnit';
 import { Suspense, useCallback, useRef, useState } from 'react';
 import { DndProvider } from 'react-dnd';
 import { TouchBackend } from 'react-dnd-touch-backend';
-
+import Image from 'next/image';
 // import { DndProvider } from 'react-dnd-multi-backend';
 // import { HTML5Backend } from 'react-dnd-html5-backend';
 import PlayerListUnit from '@/components/lineup/PlayerListUnit';
@@ -81,11 +81,20 @@ function LineUp() {
         </div>
         <div className={S.containerWrapper}>
           {/* //나누기 */}
+          <div className={S.backLogoWrapper}>
+            <Image
+              alt={urlClubName || ''}
+              src={pickClubValue?.backLogo || ''}
+              width={300}
+              // fill
+              // style={{ objectFit: 'contain' }} // 'cover'도 가능
+            />
+          </div>
           <DndProvider backend={TouchBackend}>
             {/* backend={HTML5Backend} */}
             <div
               className={S.listWrapper}
-              style={{ backgroundColor: pickClubValue?.color.bright }}
+              // style={{ backgroundColor: pickClubValue?.color.bright }}
               ref={divRef}
             >
               <div className={S.playerListWrapper}>
