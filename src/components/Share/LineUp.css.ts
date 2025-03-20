@@ -6,10 +6,13 @@ export const container = style({
   margin: '0 auto',
   display: 'flex',
   flexDirection: 'column',
+  backgroundColor: '  #F2F3F6',
   width: '100%',
 });
 
 export const containerWrapper = style({
+  position: 'relative',
+  backgroundColor: ' #F2F3F6',
   display: 'flex',
   flexDirection: 'column',
   margin: '0 auto',
@@ -18,6 +21,14 @@ export const containerWrapper = style({
   maxWidth: '450px',
   boxSizing: 'border-box',
   padding: '0px 0px 24px 0px',
+});
+
+export const backLogoWrapper = style({
+  position: 'absolute',
+  top: '40%',
+  left: '50%',
+  transform: 'translate(-50%, -50%)',
+  zIndex: 1,
 });
 
 export const buttonContainerWrapper = style({

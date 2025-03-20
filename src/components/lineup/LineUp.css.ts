@@ -1,16 +1,13 @@
 import { style } from '@vanilla-extract/css';
 
 export const container = style({
-  // display: 'flex',
-  // flexDirection: 'column',
-
-  // boxSizing: 'border-box',
   minHeight: '100vh',
   height: '100%',
   margin: '0 auto',
-  // maxWidth: '450px',
   display: 'flex',
   flexDirection: 'column',
+  backgroundColor: '  #F2F3F6',
+
   width: '100%',
 });
 
@@ -23,7 +20,6 @@ export const backLogoWrapper = style({
 });
 
 export const containerWrapper = style({
-  // zIndex: 2,
   position: 'relative',
   display: 'flex',
   flexDirection: 'column',

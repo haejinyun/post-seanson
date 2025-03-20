@@ -10,8 +10,7 @@ import { DndProvider } from 'react-dnd';
 import * as HTML5toTouch from 'react-dnd-multi-backend'; // or any other pipeline
 import { HTML5Backend } from 'react-dnd-html5-backend';
 import PlayerListUnit from '@/components/lineup/PlayerListUnit';
-// import downloadImage from '@/util/downloadImage';
-// import saveAs from 'file-saver';
+import Image from 'next/image';
 import * as S from './LineUp.css';
 
 function Share() {
@@ -114,6 +113,9 @@ function Share() {
             Line up
           </div>
           <div className={S.containerWrapper}>
+            <div className={S.backLogoWrapper}>
+              <Image alt={urlClubName || ''} src={pickClubValue?.backLogo || ''} width={300} />
+            </div>
             {/* //나누기 */}
             <DndProvider options={HTML5toTouch} backend={HTML5Backend}>
               <div className={S.listWrapper}>

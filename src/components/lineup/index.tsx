@@ -82,13 +82,7 @@ function LineUp() {
         <div className={S.containerWrapper}>
           {/* //나누기 */}
           <div className={S.backLogoWrapper}>
-            <Image
-              alt={urlClubName || ''}
-              src={pickClubValue?.backLogo || ''}
-              width={300}
-              // fill
-              // style={{ objectFit: 'contain' }} // 'cover'도 가능
-            />
+            <Image alt={urlClubName || ''} src={pickClubValue?.backLogo || ''} width={300} />
           </div>
           <DndProvider backend={TouchBackend}>
             {/* backend={HTML5Backend} */}
