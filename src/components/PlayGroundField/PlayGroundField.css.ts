@@ -63,11 +63,11 @@ export const playerPosition = recipe({
       },
       twoInfield: {
         top: '43%',
-        left: '28%',
+        right: '28%',
       },
       shortstopInfield: {
         top: '43%',
-        right: '28%',
+        left: '28%',
       },
       threeInfield: {
         top: '60%',
