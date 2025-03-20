@@ -17,6 +17,7 @@
     "@tanstack/react-query": "^5.62.8",
     "@vanilla-extract/css": "^1.16.0",
     "@vanilla-extract/recipes": "^0.5.5",
+    "@vercel/analytics": "^1.5.0",
     "axios": "^1.7.9",
     "file-saver": "^2.0.5",
     "html2canvas": "^1.4.1",

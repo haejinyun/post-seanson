@@ -5,6 +5,7 @@ import './globals.css';
 // import Footer from '@/components/Footer/page';
 import TanstackProviders from '@/provider/tanstackProviders';
 import { ClubProvider } from '@/provider/clubProviders';
+import { Analytics } from '@vercel/analytics/react';
 
 const geistSans = localFont({
   src: './fonts/GeistVF.woff',
@@ -52,6 +53,7 @@ export default function RootLayout({
       >
         <TanstackProviders>
           <ClubProvider>{children}</ClubProvider>
+          <Analytics />
         </TanstackProviders>
       </body>
     </html>
