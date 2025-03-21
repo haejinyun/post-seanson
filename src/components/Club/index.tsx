@@ -3,6 +3,7 @@
 // import LottieComponent from '@/components/Lottie';
 import { useRouter } from 'next/navigation';
 // import baseballLottie from '@/assets/lottie/baseball.json';
+import mainlogo from '@/assets/gif/mainlogo.gif';
 import * as S from './Club.css';
 
 function Club() {
@@ -29,10 +30,11 @@ function Club() {
           margin: '0 auto',
           display: 'flex',
           height: '100%',
+          alignItems: 'center',
           justifyContent: 'center',
         }}
       >
-        {/* <LottieComponent animationData={baseballLottie} /> */}
+        <img src={mainlogo.src} alt="mainlogo" style={{ height: '330px' }} />
       </div>
       <div
         style={{

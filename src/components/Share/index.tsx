@@ -1,3 +1,6 @@
+/* eslint-disable react/no-array-index-key */
+/* eslint-disable @next/next/no-img-element */
+
 'use client';
 
 import html2canvas from 'html2canvas';
@@ -10,8 +13,7 @@ import { DndProvider } from 'react-dnd';
 import * as HTML5toTouch from 'react-dnd-multi-backend'; // or any other pipeline
 import { HTML5Backend } from 'react-dnd-html5-backend';
 import PlayerListUnit from '@/components/lineup/PlayerListUnit';
-import Image from 'next/image';
-import * as S from './LineUp.css';
+import * as S from './Share.css';
 
 function Share() {
   const searchParams = useSearchParams();
@@ -38,9 +40,6 @@ function Share() {
   });
 
   const mainPitcher = groupedPlayers.pitcher.player[0];
-  console.log('groupedPlayers', groupedPlayers);
-
-  console.log('parsedPlayerList:', parsedPlayerList);
 
   const moveBatterPlayer = useCallback((dragIndex: number, hoverIndex: number) => {
     setGroupedPlayers(prevState => {
@@ -62,26 +61,6 @@ function Share() {
 
   const divRef = useRef<HTMLDivElement>(null);
 
-  // const handleDownloadPrev = async () => {
-  //   if (!divRef.current) return;
-
-  //   try {
-  //     const div = divRef.current;
-  //     const canvas = await html2canvas(div, { scale: 2, useCORS: true });
-
-  //     // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  //     canvas.toBlob((blob: any) => {
-  //       if (blob !== null) {
-  //         saveAs(blob, 'result.png');
-  //       }
-  //     });
-  //   } catch (error) {
-  //     console.error('Error converting div to image:', error);
-  //   }
-  // };
-
-  console.log('mainPitcher:', mainPitcher);
-
   const handleDownload = async () => {
     if (!divRef.current) return;
 
@@ -93,7 +72,7 @@ function Share() {
 
       const link = document.createElement('a');
       link.href = imageData;
-      link.download = 'result.png';
+      link.download = `${pickClubValue?.value}.png`;
 
       // iOS에서는 document.body.appendChild를 하지 않고 click() 호출해야 함
       document.body.appendChild(link);
@@ -105,20 +84,25 @@ function Share() {
     }
   };
 
+  const imageSrc =
+    typeof pickClubValue?.backLogo === 'string'
+      ? pickClubValue?.backLogo
+      : pickClubValue?.backLogo.src;
+
   return (
     <Suspense>
       <div className={S.container}>
-        <div ref={divRef}>
+        <div className={S.downloadWrapper} ref={divRef}>
           <div className={S.header} style={{ backgroundColor: pickClubValue?.color.main }}>
             Line up
           </div>
           <div className={S.containerWrapper}>
             <div className={S.backLogoWrapper}>
-              <Image alt={urlClubName || ''} src={pickClubValue?.backLogo || ''} width={300} />
+              <img alt={urlClubName || ''} src={imageSrc} width={300} />
             </div>
-            {/* //나누기 */}
-            <DndProvider options={HTML5toTouch} backend={HTML5Backend}>
-              <div className={S.listWrapper}>
+            <div className={S.listWrapper}>
+              <DndProvider options={HTML5toTouch} backend={HTML5Backend}>
+                {/* <div className={S.listWrapper}> */}
                 <div className={S.playerListWrapper}>
                   <PlayerListUnit
                     index={0}
@@ -130,7 +114,6 @@ function Share() {
                   {groupedPlayers.batter.player.map((player, index) => {
                     return (
                       <DraggableItem
-                        // eslint-disable-next-line react/no-array-index-key
                         key={`${player.name}-${index}`}
                         id={player.name}
                         index={index}
@@ -146,8 +129,9 @@ function Share() {
                     );
                   })}
                 </div>
-              </div>
-            </DndProvider>
+                {/* </div> */}
+              </DndProvider>
+            </div>
           </div>
         </div>
         <div className={S.buttonContainerWrapper} style={{ gap: '20px' }}>
@@ -164,19 +148,6 @@ function Share() {
           >
             IMAGE DOWNLOAD
           </button>
-          {/* <button
-            type="button"
-            onClick={handleDownload}
-            className={S.buttonTest}
-            style={
-              {
-                '--button-hover-bg': pickClubValue?.color.hoverColor,
-                '--button-bg': pickClubValue?.color.main,
-              } as React.CSSProperties
-            }
-          >
-            SHARE
-          </button> */}
         </div>
       </div>
     </Suspense>

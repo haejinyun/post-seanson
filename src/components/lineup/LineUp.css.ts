@@ -28,7 +28,7 @@ export const containerWrapper = style({
   backgroundColor: '  #F2F3F6',
   width: '100%',
   maxWidth: '450px',
-  padding: '0px 24px 24px 24px',
+  // padding: '0px 24px 0px 24px',
   boxSizing: 'border-box',
 });
 
@@ -52,6 +52,7 @@ export const listWrapper = style({
 });
 
 export const playerListWrapper = style({
+  padding: '0px 24px 0px 24px',
   display: 'flex',
   flexDirection: 'column',
   // backgroundColor: '#F2F3F6',
@@ -90,4 +91,15 @@ export const buttonTest = style({
       backgroundColor: 'var(--button-hover-bg)', // Hover 시 CSS 변수 적용
     },
   },
+});
+
+export const buttonContainerWrapper = style({
+  display: 'flex',
+  flexDirection: 'column',
+  margin: '0 auto',
+  minWidth: '320px',
+  width: '100%',
+  maxWidth: '450px',
+  boxSizing: 'border-box',
+  padding: '0px 24px 24px 24px',
 });

@@ -120,19 +120,21 @@ function LineUp() {
             </div>
           </DndProvider>
           {/* //나누기 */}
-          <button
-            type="button"
-            onClick={handleDownload}
-            className={S.buttonTest}
-            style={
-              {
-                '--button-hover-bg': pickClubValue?.color.hoverColor,
-                '--button-bg': pickClubValue?.color.main,
-              } as React.CSSProperties
-            }
-          >
-            SUBMIT
-          </button>
+          <div className={S.buttonContainerWrapper} style={{ gap: '20px' }}>
+            <button
+              type="button"
+              onClick={handleDownload}
+              className={S.buttonTest}
+              style={
+                {
+                  '--button-hover-bg': pickClubValue?.color.hoverColor,
+                  '--button-bg': pickClubValue?.color.main,
+                } as React.CSSProperties
+              }
+            >
+              SUBMIT
+            </button>
+          </div>
         </div>
       </div>
     </Suspense>

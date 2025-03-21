@@ -10,6 +10,11 @@ export const container = style({
   width: '100%',
 });
 
+export const downloadWrapper = style({
+  backgroundColor: '  #F2F3F6',
+  position: 'relative',
+});
+
 export const containerWrapper = style({
   position: 'relative',
   backgroundColor: ' #F2F3F6',
@@ -20,11 +25,11 @@ export const containerWrapper = style({
   width: '100%',
   maxWidth: '450px',
   boxSizing: 'border-box',
-  padding: '0px 0px 24px 0px',
 });
 
 export const backLogoWrapper = style({
   position: 'absolute',
+  objectFit: 'contain',
   top: '40%',
   left: '50%',
   transform: 'translate(-50%, -50%)',
@@ -57,10 +62,11 @@ export const header = style({
 export const listWrapper = style({
   display: 'flex',
   flexDirection: 'column',
+  zIndex: 10,
 });
 
 export const playerListWrapper = style({
-  padding: '0px 24px 24px 24px',
+  padding: '0px 24px 0px 24px',
   display: 'flex',
   flexDirection: 'column',
 });
